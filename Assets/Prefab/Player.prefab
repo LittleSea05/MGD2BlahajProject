@@ -188,8 +188,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 413f597ba5a3a7542a7da1fbdaaef825, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::FishSwimController
-  moveSpeed: 10
-  rotateSpeed: 10
+  rushSpeed: 50
+  playerJoystick: {fileID: 0}
+  moveSpeed: 15
+  tiltSpeed: 8
+  maxTiltAngle: 20
 --- !u!54 &2903855661096155562
 Rigidbody:
   m_ObjectHideFlags: 0
