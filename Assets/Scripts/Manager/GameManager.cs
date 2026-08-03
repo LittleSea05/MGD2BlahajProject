@@ -8,16 +8,21 @@ public class GameManager : MonoBehaviour
     private bool endGame=false;
     public GameObject settingCanva;
 
+    public void Start()
+    {
+        Time.timeScale = 1f;
+    }
+
     public void musicCanva()
     {
         settingCanva.SetActive(true);
-        Time.timeScale=0f;
+        Time.timeScale = 0f;
     }
 
     public void backToGame()
     {
         settingCanva.SetActive(false);
-        Time.timeScale=1f;
+        Time.timeScale = 1f;
     }
 
 

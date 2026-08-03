@@ -41,7 +41,7 @@ public class HealthSlider : MonoBehaviour
     {
         panel.SetActive(true);
         Time.timeScale=0f;
-        
+
     }
 
     public void backMenu()

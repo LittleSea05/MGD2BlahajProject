@@ -14,7 +14,7 @@ public class ChangeScene : MonoBehaviour
 
      public void GoLevelSelection()
     {
-        SceneManager.LoadScene("Scene2");
+        SceneManager.LoadScene("SelectLevel");
     }
 
      public void GoOptionScene()

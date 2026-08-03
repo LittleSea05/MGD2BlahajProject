@@ -7,7 +7,7 @@ public class RushButton : MonoBehaviour,IPointerDownHandler, IPointerUpHandler
 
     void Update()
     {
-        Debug.Log("RushButton Update running, IsRushing = " + IsRushing);
+        //Debug.Log("RushButton Update running, IsRushing = " + IsRushing);
         if(Input.GetKeyDown(KeyCode.LeftShift))
         {
             IsRushing = true;
