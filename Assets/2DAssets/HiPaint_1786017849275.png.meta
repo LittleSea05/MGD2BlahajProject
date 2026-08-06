@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 4e0578732dadadf4ba9474076d9ba003
+guid: 1ae737bf3918a3d4db593a21dd5d01c8
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -106,106 +106,71 @@ TextureImporter:
     ignorePlatformSupport: 0
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
-  - serializedVersion: 4
-    buildTarget: iOS
-    maxTextureSize: 2048
-    resizeAlgorithm: 0
-    textureFormat: -1
-    textureCompression: 1
-    compressionQuality: 50
-    crunchedCompression: 0
-    allowsAlphaSplitting: 0
-    overridden: 0
-    ignorePlatformSupport: 0
-    androidETC2FallbackOverride: 0
-    forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: game-ui-set-buttons-window-260nw-2035404329-removebg-preview_0
+      name: HiPaint_1786017849275_0
       rect:
         serializedVersion: 2
-        x: 30
-        y: 222
-        width: 38
-        height: 42
+        x: 40
+        y: 1327
+        width: 729
+        height: 423
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 013e39a5ee994124081d4d7ac40eeccf
-      internalID: -1392488489
+      spriteID: 010e2e2ef59873c449cf52876fefbf9a
+      internalID: 454314525
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: game-ui-set-buttons-window-260nw-2035404329-removebg-preview_1
+      name: HiPaint_1786017849275_1
       rect:
         serializedVersion: 2
-        x: 78
-        y: 216
-        width: 168
-        height: 48
+        x: 127
+        y: 1233
+        width: 517
+        height: 74
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: e73db29024e1e4847aef0eb2c35f1cbc
-      internalID: -58127720
+      spriteID: 1e2ff4aedd75e194c8525af5108a6d0a
+      internalID: 941025485
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: game-ui-set-buttons-window-260nw-2035404329-removebg-preview_2
+      name: HiPaint_1786017849275_2
       rect:
         serializedVersion: 2
-        x: 24
-        y: 54
-        width: 144
-        height: 150
+        x: 89
+        y: 1066
+        width: 579
+        height: 167
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 36c0fad612af22d4bae75a1c25cc6f5e
-      internalID: 465452718
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: game-ui-set-buttons-window-260nw-2035404329-removebg-preview_3
-      rect:
-        serializedVersion: 2
-        x: 198
-        y: 51
-        width: 42
-        height: 153
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: d7ca2432a5e46cd479dcb0d921aeb562
-      internalID: 624062606
+      spriteID: 54c50664012ab634e8d950dba35a3f18
+      internalID: -2109210611
       vertices: []
       indices: 
       edges: []
@@ -214,7 +179,7 @@ TextureImporter:
     customData: 
     physicsShape: []
     bones: []
-    spriteID: b6635d6d5334d254aac28814a571cbc0
+    spriteID: a3bbc72f9e6b5924ea12a318669fc201
     internalID: 0
     vertices: []
     indices: 
@@ -222,16 +187,11 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     spriteCustomMetadata:
-      entries:
-      - key: SpriteEditor.SliceOnImport
-        value: True
-      - key: SpriteEditor.SliceSettings
-        value: '{"sliceOnImport":true,"gridCellCount":{"x":1.0,"y":1.0},"gridSpriteSize":{"x":64.0,"y":64.0},"gridSpriteOffset":{"x":0.0,"y":0.0},"gridSpritePadding":{"x":0.0,"y":0.0},"pivot":{"x":0.5,"y":0.5},"pivotPixels":{"x":0.0,"y":0.0},"autoSlicingMethod":0,"spriteAlignment":0,"pivotUnitMode":0,"slicingType":0,"keepEmptyRects":false,"isAlternate":false}'
+      entries: []
     nameFileIdTable:
-      game-ui-set-buttons-window-260nw-2035404329-removebg-preview_0: -1392488489
-      game-ui-set-buttons-window-260nw-2035404329-removebg-preview_1: -58127720
-      game-ui-set-buttons-window-260nw-2035404329-removebg-preview_2: 465452718
-      game-ui-set-buttons-window-260nw-2035404329-removebg-preview_3: 624062606
+      HiPaint_1786017849275_0: 454314525
+      HiPaint_1786017849275_1: 941025485
+      HiPaint_1786017849275_2: -2109210611
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
