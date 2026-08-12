@@ -127,10 +127,12 @@ public void ShowLevelButton(GameObject obj)
 
     RectTransform rect = obj.GetComponent<RectTransform>();
 
+    rect.DOKill();
+
     rect.localScale = Vector3.one * 0.8f;
 
-    rect.DOScale(1f, 0.25f)
-        .SetEase(Ease.OutBack);
+    rect.DOScale(1f, 0.3f)
+        .SetEase(Ease.OutBack, 0.3f);
 }
 
 public void ShowPanel(GameObject panel)
@@ -139,18 +141,31 @@ public void ShowPanel(GameObject panel)
 
     RectTransform rect = panel.GetComponent<RectTransform>();
 
-    rect.anchoredPosition = new Vector2(rect.anchoredPosition.x, -10f);
-    rect.localScale = Vector3.one * 0.8f;
+    // 记住 Panel 原本的位置
+    float targetY = rect.anchoredPosition.y;
+
+    // 从原本位置下方 30px 开始
+    float startY = targetY - 30f;
+
+    rect.anchoredPosition = new Vector2(
+        rect.anchoredPosition.x,
+        startY
+    );
+
+    // 从稍微小一点开始
+    rect.localScale = Vector3.one * 0.9f;
 
     Sequence seq = DOTween.Sequence();
 
     seq.Append(
-        rect.DOAnchorPosY(0, 0.40f)
-            .SetEase(Ease.OutBack));
+        rect.DOAnchorPosY(targetY, 0.45f)
+            .SetEase(Ease.OutCubic)
+    );
 
     seq.Join(
-        rect.DOScale(1f, 0.40f)
-            .SetEase(Ease.OutBack));
+        rect.DOScale(1f, 0.4f)
+            .SetEase(Ease.OutCubic)
+    );
 }
 
 }
