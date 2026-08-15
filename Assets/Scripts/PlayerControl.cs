@@ -11,6 +11,8 @@ public class PlayerControl : MonoBehaviour
     public float moveSpeed = 5f;
     public float tiltSpeed = 8f;
     public float maxTiltAngle = 20f;
+    public float collectTreasure;
+    public int currentLevelIndex;
 
     private Vector3 moveDirection;
     private bool facingRight = true;
@@ -22,6 +24,8 @@ public class PlayerControl : MonoBehaviour
         rb.constraints = RigidbodyConstraints.FreezePositionZ
                        | RigidbodyConstraints.FreezeRotationX
                        | RigidbodyConstraints.FreezeRotationY;
+
+        collectTreasure = 0;
     }
 
     void FixedUpdate()
@@ -63,4 +67,17 @@ public class PlayerControl : MonoBehaviour
 
         
     }
+
+    void OnTriggerEnter(Collider other)
+    {
+        if(other.gameObject.CompareTag("Treasure"))
+        {
+            Destroy(other.gameObject);
+            collectTreasure += 1;
+            CollectManager.Instance.showPickUp();
+
+            GameProgress.SaveTreasureAmount(currentLevelIndex, (int)collectTreasure);
+        }
+    }
 }
+

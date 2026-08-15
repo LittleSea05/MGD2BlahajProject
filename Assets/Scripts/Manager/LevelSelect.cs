@@ -1,5 +1,6 @@
 using UnityEngine;
 using DG.Tweening;
+using TMPro;
 
 public class LevelSelect : MonoBehaviour
 {
@@ -16,6 +17,7 @@ public class LevelSelect : MonoBehaviour
     public GameObject PreviousButton;
 
     public GameObject[] LevelDescription;
+    public TextMeshProUGUI[] TreasureText;
 
     public GameObject InfoPanel;
 
@@ -113,11 +115,29 @@ void UpdateLevelButtons()
         if (i == currentLevel)
         {
              ShowLevelButton(LevelDescription[i]);
+             UpdateDescriptionText(i);
         }
         else
         {
              LevelDescription[i].SetActive(false);
         }
+    }
+}
+
+public void UpdateDescriptionText(int levelIndex)
+{
+    if (TreasureText == null || levelIndex >= TreasureText.Length) return;
+    if (TreasureText[levelIndex] == null) return;
+
+    if (levelIndex == 0)
+    {
+        TreasureText[levelIndex].text = ""; 
+    }
+    else
+    {
+        int required = GameProgress.RequiredAmount(levelIndex);
+        int collected = GameProgress.GetTreasureAmount(levelIndex - 1);
+        TreasureText[levelIndex].text = $"Treasure Needed: {collected}/{required}";
     }
 }
 
