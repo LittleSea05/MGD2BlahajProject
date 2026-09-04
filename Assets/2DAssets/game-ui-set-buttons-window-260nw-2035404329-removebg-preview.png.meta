@@ -127,9 +127,9 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 30
-        y: 224
+        y: 222
         width: 38
-        height: 38
+        height: 42
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -138,7 +138,7 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 1e18ab4b3f678884196137dd9606c706
+      spriteID: abf81763f2240c54db61ca849eb263bd
       internalID: -1392488489
       vertices: []
       indices: 
@@ -148,10 +148,10 @@ TextureImporter:
       name: game-ui-set-buttons-window-260nw-2035404329-removebg-preview_1
       rect:
         serializedVersion: 2
-        x: 80
-        y: 220
-        width: 162
-        height: 41
+        x: 78
+        y: 216
+        width: 168
+        height: 48
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -160,7 +160,7 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 92e270030520ff348bba6a484fc84fbe
+      spriteID: 6153b813902325b4690209fc6b5ad2d5
       internalID: -58127720
       vertices: []
       indices: 
@@ -170,10 +170,10 @@ TextureImporter:
       name: game-ui-set-buttons-window-260nw-2035404329-removebg-preview_2
       rect:
         serializedVersion: 2
-        x: 26
-        y: 59
-        width: 142
-        height: 142
+        x: 24
+        y: 54
+        width: 144
+        height: 150
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -182,7 +182,7 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 3a2be75ab949ae544bf916f18341c665
+      spriteID: 7152b54e4d8611b44ab09f91e5192cb3
       internalID: 465452718
       vertices: []
       indices: 
@@ -194,8 +194,8 @@ TextureImporter:
         serializedVersion: 2
         x: 198
         y: 51
-        width: 40
-        height: 151
+        width: 42
+        height: 153
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -204,7 +204,7 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 19a88af5942aec14ab7590b6bd0baf42
+      spriteID: d72f5a7e31186d34080c62aba33b8a6b
       internalID: 624062606
       vertices: []
       indices: 
