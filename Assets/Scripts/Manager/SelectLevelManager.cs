@@ -25,6 +25,10 @@ public class SelectLevelManager : MonoBehaviour
 
         public void MainMenu()
     {
+
+        Time.timeScale = 1f;
+        AudioListener.pause = false;
+
         SceneManager.LoadScene("MainMenu");
     }
 

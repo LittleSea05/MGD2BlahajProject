@@ -9,6 +9,9 @@ public class ChangeScene : MonoBehaviour
         // Start is called once before the first execution of Update after the MonoBehaviour is created
     public void GoMainMenu()
     {
+        Time.timeScale = 1f;
+        AudioListener.pause = false;
+
         SceneManager.LoadScene("MainMenu");
     }
 

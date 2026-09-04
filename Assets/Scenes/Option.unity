@@ -522,21 +522,9 @@ PrefabInstance:
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 755547165}
-    - target: {fileID: 1448251971241811304, guid: b17db56be9ca3ec4a993dc509cd8b0f9, type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: GoMainMenu
-      objectReference: {fileID: 0}
-    - target: {fileID: 1448251971241811304, guid: b17db56be9ca3ec4a993dc509cd8b0f9, type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
-      value: ChangeScene, Assembly-CSharp
-      objectReference: {fileID: 0}
     - target: {fileID: 1523028557943500801, guid: b17db56be9ca3ec4a993dc509cd8b0f9, type: 3}
       propertyPath: m_Name
       value: Option Canvas
-      objectReference: {fileID: 0}
-    - target: {fileID: 1523028557943500801, guid: b17db56be9ca3ec4a993dc509cd8b0f9, type: 3}
-      propertyPath: m_IsActive
-      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2129540669276769179, guid: b17db56be9ca3ec4a993dc509cd8b0f9, type: 3}
       propertyPath: m_Pivot.x
@@ -624,10 +612,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4471145865966164245, guid: b17db56be9ca3ec4a993dc509cd8b0f9, type: 3}
       propertyPath: m_AnchorMax.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5578279126778195178, guid: b17db56be9ca3ec4a993dc509cd8b0f9, type: 3}
-      propertyPath: m_MatchWidthOrHeight
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5607111260422007746, guid: b17db56be9ca3ec4a993dc509cd8b0f9, type: 3}
