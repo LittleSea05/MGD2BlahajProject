@@ -10,6 +10,7 @@ public class GameManager : MonoBehaviour
 
     public void Start()
     {
+        settingCanva.SetActive(false);
         Time.timeScale = 1f;
     }
 

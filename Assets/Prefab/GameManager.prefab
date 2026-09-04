@@ -14,6 +14,7 @@ GameObject:
   - component: {fileID: 1184985344313977205}
   - component: {fileID: 7234864151301800779}
   - component: {fileID: 838187568595443534}
+  - component: {fileID: 8694092219107140505}
   m_Layer: 0
   m_Name: GameManager
   m_TagString: Untagged
@@ -111,3 +112,15 @@ MonoBehaviour:
   fadeInTime: 0.5
   fadeOutTime: 0.5
   showTime: 1
+--- !u!114 &8694092219107140505
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7886848357304556873}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6c2cec324fdefc546942b3629dd0f66f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::SelectLevelManager
