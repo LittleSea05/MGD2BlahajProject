@@ -17,6 +17,8 @@ public class PlayerControl : MonoBehaviour
     private Vector3 moveDirection;
     private bool facingRight = true;
 
+    public float currentSize = 2f;
+
     void Start()
     {
         rb = GetComponent<Rigidbody>();
@@ -70,14 +72,30 @@ public class PlayerControl : MonoBehaviour
 
     void OnTriggerEnter(Collider other)
     {
-        if(other.gameObject.CompareTag("Treasure"))
-        {
-            Destroy(other.gameObject);
-            collectTreasure += 1;
-            CollectManager.Instance.showPickUp();
+        if (other.gameObject.CompareTag("Treasure"))
+    {
+        Destroy(other.gameObject);
+        collectTreasure += 1;
+        CollectManager.Instance.showPickUp();
+        GameProgress.SaveTreasureAmount(currentLevelIndex, (int)collectTreasure);
+    }
+    else if (other.gameObject.CompareTag("NPCFish"))
+    {
+        Fish fish = other.GetComponent<Fish>();
+        if (fish == null) return;
 
-            GameProgress.SaveTreasureAmount(currentLevelIndex, (int)collectTreasure);
+        if (currentSize >= fish.fishSize)
+        {
+            // 玩家更大，吃掉它
+            currentSize += fish.growthOnEat;
+            fish.GetEaten();
         }
+        else
+        {
+            // 玩家更小，被反咬一口，具体逻辑你们自己定
+            // 比如：PlayerHealth.Instance.TakeDamage(...)
+        }
+    }
     }
 }
 
