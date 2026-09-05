@@ -95,6 +95,24 @@ public class PlayerControl : MonoBehaviour
             // 玩家更小，被反咬一口，具体逻辑你们自己定
             // 比如：PlayerHealth.Instance.TakeDamage(...)
         }
+    }else if (other.gameObject.CompareTag("Boss"))
+    {
+    BossFish boss = other.GetComponent<BossFish>();
+    if (boss == null) return;
+
+    if (boss.IsWeak)
+    {
+        // 已经虚弱了，吃掉它
+        boss.GetEaten();
+    }
+    else if (RushButton.IsRushing)
+    {
+        // 冲刺状态下撞到它，算一次有效撞击
+        boss.OnRushHitByPlayer();
+    }
+    // 没有在rush、boss也没虚弱：什么都不做。
+    // boss会不会咬玩家，是BossFish自己每帧检测距离来判断的，不依赖这个触发器，
+    // 所以这里不用担心"漏处理"玩家被咬的情况
     }
     }
 }

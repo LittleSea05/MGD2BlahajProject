@@ -15,6 +15,7 @@ GameObject:
   - component: {fileID: 7234864151301800779}
   - component: {fileID: 838187568595443534}
   - component: {fileID: 8694092219107140505}
+  - component: {fileID: 1270928590441386398}
   m_Layer: 0
   m_Name: GameManager
   m_TagString: Untagged
@@ -83,6 +84,7 @@ MonoBehaviour:
   maxHealth: 100
   drainRate: 5
   panel: {fileID: 0}
+  scoreDisplay: {fileID: 0}
 --- !u!114 &7234864151301800779
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -124,3 +126,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6c2cec324fdefc546942b3629dd0f66f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::SelectLevelManager
+--- !u!114 &1270928590441386398
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7886848357304556873}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 17ebd2c7a8d6b054b9fe90159ea400ac, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::ScoreDisplay
+  liveScoreText: {fileID: 0}
+  finalScoreText: {fileID: 0}
+  coinsText: {fileID: 0}

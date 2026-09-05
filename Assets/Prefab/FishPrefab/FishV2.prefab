@@ -132,6 +132,8 @@ MonoBehaviour:
   fishSize: 1
   scoreValue: 10
   growthOnEat: 0.05
+  healthRestoreOnEat: 10
+  eatEffectPrefab: {fileID: 0}
 --- !u!54 &6182386166070436907
 Rigidbody:
   m_ObjectHideFlags: 0

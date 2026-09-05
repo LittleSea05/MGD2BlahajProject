@@ -740,7 +740,7 @@ GameObject:
   - component: {fileID: 323247654}
   - component: {fileID: 323247653}
   m_Layer: 5
-  m_Name: Button
+  m_Name: SpeedButton
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -864,7 +864,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &356445301
 RectTransform:
   m_ObjectHideFlags: 0
@@ -1556,7 +1556,7 @@ GameObject:
   - component: {fileID: 519373116}
   - component: {fileID: 519373115}
   m_Layer: 5
-  m_Name: Text (TMP) (1)
+  m_Name: Score
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1773,7 +1773,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &628049644
 RectTransform:
   m_ObjectHideFlags: 0
@@ -1831,6 +1831,53 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 628049643}
   m_CullTransparentMesh: 1
+--- !u!1 &631522628
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 631522630}
+  - component: {fileID: 631522629}
+  m_Layer: 0
+  m_Name: ScoreDisplay
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &631522629
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 631522628}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 17ebd2c7a8d6b054b9fe90159ea400ac, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::ScoreDisplay
+  liveScoreText: {fileID: 0}
+  finalScoreText: {fileID: 0}
+  coinsText: {fileID: 519373115}
+--- !u!4 &631522630
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 631522628}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 577.9568, y: 291.5462, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &683490143
 GameObject:
   m_ObjectHideFlags: 0
@@ -2122,7 +2169,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &865639139
 RectTransform:
   m_ObjectHideFlags: 0
@@ -2816,7 +2863,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1145471246
 RectTransform:
   m_ObjectHideFlags: 0
@@ -2885,6 +2932,7 @@ GameObject:
   - component: {fileID: 1257386604}
   - component: {fileID: 1257386606}
   - component: {fileID: 1257386605}
+  - component: {fileID: 1257386607}
   m_Layer: 5
   m_Name: ScoreIcon
   m_TagString: Untagged
@@ -2951,6 +2999,21 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1257386603}
   m_CullTransparentMesh: 1
+--- !u!114 &1257386607
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1257386603}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 17ebd2c7a8d6b054b9fe90159ea400ac, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::ScoreDisplay
+  liveScoreText: {fileID: 0}
+  finalScoreText: {fileID: 0}
+  coinsText: {fileID: 0}
 --- !u!1 &1269075238
 GameObject:
   m_ObjectHideFlags: 0
@@ -3570,7 +3633,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1457657830
 RectTransform:
   m_ObjectHideFlags: 0
@@ -3934,7 +3997,7 @@ GameObject:
   - component: {fileID: 1595366091}
   - component: {fileID: 1595366090}
   m_Layer: 5
-  m_Name: Button
+  m_Name: LevelButton
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -4260,7 +4323,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1664853330
 RectTransform:
   m_ObjectHideFlags: 0
@@ -4406,7 +4469,7 @@ GameObject:
   - component: {fileID: 1728232650}
   - component: {fileID: 1728232649}
   m_Layer: 5
-  m_Name: Button
+  m_Name: HungerButton
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -4474,7 +4537,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1728232650}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1999740408}
+        m_TargetAssemblyTypeName: 
+        m_MethodName: 
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: 
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1728232650
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4530,7 +4605,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1759212401
 RectTransform:
   m_ObjectHideFlags: 0
@@ -4684,7 +4759,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1808916505
 RectTransform:
   m_ObjectHideFlags: 0
@@ -5233,6 +5308,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1999740410}
   - component: {fileID: 1999740409}
+  - component: {fileID: 1999740411}
   m_Layer: 0
   m_Name: Manager
   m_TagString: Untagged
@@ -5267,6 +5343,38 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1999740411
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1999740408}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c89632d4301215b47b9189d2544f7afa, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Shopmanager
+  scoreDisplay: {fileID: 631522629}
+  speedShellIcons:
+  - {fileID: 1759212400}
+  - {fileID: 1145471245}
+  - {fileID: 628049643}
+  speedUpgradeButton: {fileID: 323247653}
+  weightShellIcons:
+  - {fileID: 2038253730}
+  - {fileID: 1808916504}
+  - {fileID: 1457657829}
+  weightUpgradeButton: {fileID: 1595366090}
+  hungerShellIcons:
+  - {fileID: 1664853329}
+  - {fileID: 865639138}
+  - {fileID: 356445300}
+  hungerUpgradeButton: {fileID: 1728232649}
+  confirmPanel: {fileID: 882681178}
+  confirmMessageText: {fileID: 1539235512}
+  confirmYesButton: {fileID: 683490145}
+  confirmNoButton: {fileID: 1269075240}
 --- !u!1 &2038253730
 GameObject:
   m_ObjectHideFlags: 0
@@ -5284,7 +5392,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &2038253731
 RectTransform:
   m_ObjectHideFlags: 0
@@ -5351,3 +5459,4 @@ SceneRoots:
   - {fileID: 465707504}
   - {fileID: 1788775109}
   - {fileID: 1999740410}
+  - {fileID: 631522630}

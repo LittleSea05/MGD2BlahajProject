@@ -6,6 +6,7 @@ TagManager:
   tags:
   - Treasure
   - NPCFish
+  - Boss
   layers:
   - Default
   - TransparentFX

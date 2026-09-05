@@ -8,12 +8,22 @@ using UnityEngine;
 [RequireComponent(typeof(Collider))]
 public class Fish : MonoBehaviour
 {
-    [Header("Size")]
+    [Header("体型 / 判定")]
+    [Tooltip("这条鱼的体型大小，用来跟玩家currentSize比较。数值越大鱼越大越难吃。")]
     public float fishSize = 1f;
+
+    [Header("奖励")]
+    [Tooltip("被玩家吃掉后获得的分数")]
     public int scoreValue = 10;
 
-    [Tooltip("Health++")]
+    [Tooltip("被吃掉后玩家体型增加多少（可选，做成长系统用）")]
     public float growthOnEat = 0.05f;
+
+    [Tooltip("被吃掉后玩家恢复多少生命值")]
+    public float healthRestoreOnEat = 5f;
+
+    [Header("特效（可选）")]
+    public GameObject eatEffectPrefab;
 
     /// <summary>
     /// 被玩家吃掉时调用。播放特效、通知管理器加分，然后销毁自己。
@@ -21,9 +31,20 @@ public class Fish : MonoBehaviour
     /// </summary>
     public void GetEaten()
     {
+        if (eatEffectPrefab != null)
+        {
+            Instantiate(eatEffectPrefab, transform.position, Quaternion.identity);
+        }
 
-        // 如果你有分数管理器，可以在这里调用，例如：
-        // ScoreManager.Instance.AddScore(scoreValue);
+        if (ScoreManager.Instance != null)
+        {
+            ScoreManager.Instance.AddScore(scoreValue);
+        }
+
+        if (HealthSlider.Instance != null)
+        {
+            HealthSlider.Instance.AddHealth(healthRestoreOnEat);
+        }
 
         Destroy(gameObject);
     }
