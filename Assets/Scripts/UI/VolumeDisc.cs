@@ -1,5 +1,6 @@
 using UnityEngine;
 using UnityEngine.EventSystems;
+using UnityEngine.UI;
 
 public class VolumeDisc : MonoBehaviour,
     IPointerDownHandler,
@@ -15,19 +16,38 @@ public class VolumeDisc : MonoBehaviour,
 
     private bool dragging = false;
 
+    public Toggle muteToggle;
+
+    void Start()
+    {
+
+        muteToggle.onValueChanged.AddListener(OnMuteToggle);
+
+    }
+
+    void OnMuteToggle(bool isMuted)
+    {
+        if (isMuted)
+        {
+            volume = 0f;
+        }
+        else
+        {
+            volume = 1f;
+        }
+    }
+
     void Update()
     {
-        // 没有拖曳的时候，自己慢慢旋转
+
         if (!dragging && volume > 0)
         {
             transform.Rotate(0,0,-maxSpinSpeed * volume * Time.deltaTime);
         }
 
-        // ===== Audio =====
+      
          AudioListener.volume = volume;
-        //
-        // 或者
-        // audioSource.volume = volume;
+
     }
 
     public void OnPointerDown(PointerEventData eventData)
@@ -52,16 +72,14 @@ public class VolumeDisc : MonoBehaviour,
 
         transform.rotation = Quaternion.Euler(0,0,angle);
 
-        //------------------------------------------------
-        // 把角度转换成音量
-        //------------------------------------------------
+
 
         float normalized =
             Mathf.InverseLerp(-180,180,angle);
 
         volume = normalized;
 
-        // ===== Audio =====
+  
          AudioListener.volume = volume;
     }
 }
