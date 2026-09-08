@@ -1984,6 +1984,10 @@ PrefabInstance:
       propertyPath: healthSlider
       value: 
       objectReference: {fileID: 1353235759}
+    - target: {fileID: 1184985344313977205, guid: 24407747c25ddd94da8a30101dcb022e, type: 3}
+      propertyPath: scoreDisplay
+      value: 
+      objectReference: {fileID: 1652295124}
     - target: {fileID: 1270928590441386398, guid: 24407747c25ddd94da8a30101dcb022e, type: 3}
       propertyPath: coinsText
       value: 
@@ -2048,7 +2052,8 @@ PrefabInstance:
       propertyPath: m_Name
       value: GameManager
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 5501569933416948963, guid: 24407747c25ddd94da8a30101dcb022e, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
@@ -2064,6 +2069,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6c2cec324fdefc546942b3629dd0f66f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::SelectLevelManager
+--- !u!114 &1652295124 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 1270928590441386398, guid: 24407747c25ddd94da8a30101dcb022e, type: 3}
+  m_PrefabInstance: {fileID: 1652295122}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 17ebd2c7a8d6b054b9fe90159ea400ac, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::ScoreDisplay
 --- !u!1 &1661654681
 GameObject:
   m_ObjectHideFlags: 0
@@ -2253,6 +2269,14 @@ PrefabInstance:
     - target: {fileID: 2691057556646478606, guid: 49c0b698bd13e2742a2d72e2286f21bd, type: 3}
       propertyPath: m_AnchorMax.y
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2829046886546325325, guid: 49c0b698bd13e2742a2d72e2286f21bd, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 1652295123}
+    - target: {fileID: 2829046886546325325, guid: 49c0b698bd13e2742a2d72e2286f21bd, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: MainMenu
       objectReference: {fileID: 0}
     - target: {fileID: 3287168874578255986, guid: 49c0b698bd13e2742a2d72e2286f21bd, type: 3}
       propertyPath: m_AnchorMax.y

@@ -114,7 +114,7 @@ MeshCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 5
-  m_Convex: 0
+  m_Convex: 1
   m_CookingOptions: 30
   m_Mesh: {fileID: -5414332994079535143, guid: 38f74cd884cda8242b4fdc167c4962f8, type: 3}
 --- !u!114 &5147936335856286314
@@ -132,6 +132,8 @@ MonoBehaviour:
   fishSize: 1
   scoreValue: 10
   growthOnEat: 0.05
+  healthRestoreOnEat: 5
+  eatEffectPrefab: {fileID: 0}
 --- !u!54 &4104612693792998271
 Rigidbody:
   m_ObjectHideFlags: 0

@@ -872,6 +872,14 @@ PrefabInstance:
       propertyPath: m_AnchorMax.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2829046886546325325, guid: 49c0b698bd13e2742a2d72e2286f21bd, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 1544889427}
+    - target: {fileID: 2829046886546325325, guid: 49c0b698bd13e2742a2d72e2286f21bd, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: MainMenu
+      objectReference: {fileID: 0}
     - target: {fileID: 3287168874578255986, guid: 49c0b698bd13e2742a2d72e2286f21bd, type: 3}
       propertyPath: m_AnchorMax.y
       value: 0
@@ -5913,15 +5921,15 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 149815655024270621, guid: 1194522e65bc67d4c8de5d04f87a7393, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 387.73218
+      value: 474.5
       objectReference: {fileID: 0}
     - target: {fileID: 149815655024270621, guid: 1194522e65bc67d4c8de5d04f87a7393, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 9.606979
+      value: 57.6
       objectReference: {fileID: 0}
     - target: {fileID: 149815655024270621, guid: 1194522e65bc67d4c8de5d04f87a7393, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -87.3699
+      value: -80.7
       objectReference: {fileID: 0}
     - target: {fileID: 149815655024270621, guid: 1194522e65bc67d4c8de5d04f87a7393, type: 3}
       propertyPath: m_LocalRotation.w

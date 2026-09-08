@@ -28,6 +28,16 @@ public class SelectLevelManager : MonoBehaviour
         SceneManager.LoadScene("Shop");
     }
 
+           public void Options()
+    {
+        SceneManager.LoadScene("Option");
+    }
+
+            public void SelectLevel()
+    {
+        SceneManager.LoadScene("SelectLevel");
+    }
+
         public void MainMenu()
     {
 
@@ -35,6 +45,9 @@ public class SelectLevelManager : MonoBehaviour
         AudioListener.pause = false;
 
         SceneManager.LoadScene("MainMenu");
+
+        Time.timeScale = 1f;
+        Debug.Log("Time scale reset to 1");
     }
 
     private void TryLoadLevel(int levelIndex, string sceneName)
@@ -47,6 +60,11 @@ public class SelectLevelManager : MonoBehaviour
         {
             LockStartButton.Instance.ShowWarning();
         }
+    }
+
+    public void QuitGame()
+    {
+        Application.Quit();
     }
 
 }

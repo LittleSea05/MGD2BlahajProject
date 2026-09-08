@@ -19,6 +19,7 @@ public class HealthSlider : MonoBehaviour
     private float currentHealth;
     private float Timer;
     private bool stopGame;
+    
 
     void Awake()
     {
@@ -27,6 +28,7 @@ public class HealthSlider : MonoBehaviour
 
     void Start()
     {
+        stopGame = false;
         // 加上商城里买的"生命值(Hunger)"升级加成
         maxHealth += PlayerUpgradeData.GetHungerBonus();
 
@@ -50,7 +52,7 @@ public class HealthSlider : MonoBehaviour
 
         UpdateSlider();
 
-        if (currentHealth <= 0f)
+        if (currentHealth <= 0f && !stopGame)
         {
             Die();
         }
@@ -71,6 +73,7 @@ public class HealthSlider : MonoBehaviour
 
     void Die()
     {
+        stopGame = true;
         // 先把这局的分数记下来，因为EndRun()执行完之后runScore会被清零
         int finalScore = ScoreManager.Instance != null ? ScoreManager.Instance.runScore : 0;
 

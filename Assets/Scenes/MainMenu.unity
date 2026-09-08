@@ -224,7 +224,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -875.6561, y: 3.4798}
+  m_AnchoredPosition: {x: -875.6561, y: 3.4797974}
   m_SizeDelta: {x: 83.8934, y: 1056.7}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &95071055
@@ -1183,9 +1183,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 855264353}
-        m_TargetAssemblyTypeName: ChangeScene, Assembly-CSharp
-        m_MethodName: GoLevelSelection
+      - m_Target: {fileID: 855264355}
+        m_TargetAssemblyTypeName: SelectLevelManager, Assembly-CSharp
+        m_MethodName: SelectLevel
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -1580,7 +1580,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 855264353}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: ChangeScene, Assembly-CSharp
         m_MethodName: GoOptionScene
         m_Mode: 1
@@ -1731,7 +1731,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 855264354}
-  - component: {fileID: 855264353}
   - component: {fileID: 855264355}
   m_Layer: 0
   m_Name: MainMenu
@@ -1740,18 +1739,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &855264353
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 855264352}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6c16b82c487c2ed48808dd2cdee4e163, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::ChangeScene
 --- !u!4 &855264354
 Transform:
   m_ObjectHideFlags: 0
@@ -2203,9 +2190,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 855264353}
-        m_TargetAssemblyTypeName: ChangeScene, Assembly-CSharp
-        m_MethodName: GoOptionScene
+      - m_Target: {fileID: 855264355}
+        m_TargetAssemblyTypeName: SelectLevelManager, Assembly-CSharp
+        m_MethodName: Options
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -4158,8 +4145,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 855264353}
-        m_TargetAssemblyTypeName: ChangeScene, Assembly-CSharp
+      - m_Target: {fileID: 855264355}
+        m_TargetAssemblyTypeName: SelectLevelManager, Assembly-CSharp
         m_MethodName: QuitGame
         m_Mode: 1
         m_Arguments:
