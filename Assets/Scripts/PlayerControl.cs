@@ -47,7 +47,7 @@ public class PlayerControl : MonoBehaviour
 
         rb.linearVelocity = moveDirection * currentSpeed;
 
-        // 左右翻转,直接在自己身上做
+
         if (Mathf.Abs(horizontal) > 0.1f)
         {
             facingRight = horizontal < 0;
@@ -56,7 +56,7 @@ public class PlayerControl : MonoBehaviour
             transform.localScale = scale;
         }
 
-        // 上下移动时的轻微倾斜
+
         float tiltAngle = -vertical * maxTiltAngle;
         if (!facingRight) tiltAngle = -tiltAngle;
 
@@ -107,12 +107,10 @@ public class PlayerControl : MonoBehaviour
     }
     else if (RushButton.IsRushing)
     {
-        // 冲刺状态下撞到它，算一次有效撞击
+
         boss.OnRushHitByPlayer();
     }
-    // 没有在rush、boss也没虚弱：什么都不做。
-    // boss会不会咬玩家，是BossFish自己每帧检测距离来判断的，不依赖这个触发器，
-    // 所以这里不用担心"漏处理"玩家被咬的情况
+
     }
     }
 }

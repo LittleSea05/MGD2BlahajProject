@@ -23,7 +23,7 @@ public class GameProgress : MonoBehaviour
     public static bool IsLevelUnlocked(int levelIndex)
     {
         if (levelIndex <= 0) return true; 
-        return GetTreasureAmount(levelIndex - 1) >= RequiredAmount(levelIndex);
+        return GetTreasureAmount(levelIndex - 1) >= RequiredAmount(levelIndex -1);
     }
 
 }

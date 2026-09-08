@@ -1062,6 +1062,26 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 4274974040981560572, guid: 8cbf4c45999cf2c44b0d824910086cf4, type: 3}
+      propertyPath: InitialModule.size3D
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4274974040981560572, guid: 8cbf4c45999cf2c44b0d824910086cf4, type: 3}
+      propertyPath: InitialModule.startSize.scalar
+      value: 0.08
+      objectReference: {fileID: 0}
+    - target: {fileID: 4274974040981560572, guid: 8cbf4c45999cf2c44b0d824910086cf4, type: 3}
+      propertyPath: InitialModule.startSpeed.scalar
+      value: 0.13
+      objectReference: {fileID: 0}
+    - target: {fileID: 4274974040981560572, guid: 8cbf4c45999cf2c44b0d824910086cf4, type: 3}
+      propertyPath: InitialModule.startSize.minScalar
+      value: 0.01
+      objectReference: {fileID: 0}
+    - target: {fileID: 4274974040981560572, guid: 8cbf4c45999cf2c44b0d824910086cf4, type: 3}
+      propertyPath: InitialModule.startSpeed.minScalar
+      value: 0.05
+      objectReference: {fileID: 0}
     - target: {fileID: 4798220478256619381, guid: 8cbf4c45999cf2c44b0d824910086cf4, type: 3}
       propertyPath: m_Enabled
       value: 0
