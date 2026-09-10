@@ -1,31 +1,28 @@
 using UnityEngine;
 
-
+/// <summary>
+/// 简化版：平时朝一个随机方向慢慢游，隔几秒换个方向；
+/// 玩家进入侦测范围就直接冲过去，贴近了就咬一口（带冷却）。
+/// </summary>
 [RequireComponent(typeof(Rigidbody))]
 public class AggressiveFishAI : MonoBehaviour
 {
-    [Header("Attack")]
     public float detectRange = 10f;
-    public float chaseSpeed = 5f;
+    public float chaseSpeed = 6f;
     public float biteRange = 1f;
     public float biteDamage = 10f;
     public float biteInterval = 1f;
 
-    [Header("Wander")]
-    public Transform areaCenter;
-    public Vector2 areaSize = new Vector2(10f, 6f);
-    public float wanderSpeed = 3f;
-    public float minWaitTime = 1.5f;
-    public float maxWaitTime = 4f;
-    public float arriveDistance = 0.3f;
+    public float wanderSpeed = 4f;
+    public float changeDirectionInterval = 2f;
+
     public float tiltSpeed = 5f;
     public float maxTiltAngle = 15f;
 
     private Rigidbody rb;
     private Transform player;
-    private Vector3 centerPos;
-    private Vector3 wanderTarget;
-    private float wanderWaitTimer;
+    private Vector3 wanderDirection;
+    private float changeDirTimer;
     private float biteCooldownTimer;
     private bool facingRight = true;
 
@@ -36,19 +33,10 @@ public class AggressiveFishAI : MonoBehaviour
                        | RigidbodyConstraints.FreezeRotationX
                        | RigidbodyConstraints.FreezeRotationY;
 
-        centerPos = areaCenter != null ? areaCenter.position : transform.position;
-        PickNewWanderTarget();
+        PickNewWanderDirection();
 
         GameObject playerObj = GameObject.FindGameObjectWithTag("Player");
-        if (playerObj != null)
-        {
-            player = playerObj.transform;
-            Debug.Log($"{gameObject.name} FindPlayer {playerObj.name}");
-        }
-        else
-        {
-            Debug.LogWarning("AggressiveFishAI: No GameObject with tag 'Player' found. Please ensure the player has the correct tag.");
-        }
+        if (playerObj != null) player = playerObj.transform;
     }
 
     void FixedUpdate()
@@ -56,35 +44,22 @@ public class AggressiveFishAI : MonoBehaviour
         if (player == null)
         {
             GameObject playerObj = GameObject.FindGameObjectWithTag("Player");
-            if (playerObj != null)
-            {
-                player = playerObj.transform;
-            }
+            if (playerObj != null) player = playerObj.transform;
         }
 
-        if (biteCooldownTimer > 0f)
-        {
-            biteCooldownTimer -= Time.fixedDeltaTime;
-        }
+        if (biteCooldownTimer > 0f) biteCooldownTimer -= Time.fixedDeltaTime;
 
         float distanceToPlayer = Mathf.Infinity;
         if (player != null)
         {
             Vector3 diff = player.position - transform.position;
             diff.z = 0f;
-            distanceToPlayer = diff.magnitude;   
+            distanceToPlayer = diff.magnitude;
         }
 
-        Vector3 moveDirection;
-
-        if (player != null && distanceToPlayer <= detectRange)
-        {
-            moveDirection = ChasePlayer(distanceToPlayer);
-        }
-        else
-        {
-            moveDirection = Wander();
-        }
+        Vector3 moveDirection = (player != null && distanceToPlayer <= detectRange)
+            ? ChasePlayer(distanceToPlayer)
+            : Wander();
 
         FaceDirection(moveDirection);
     }
@@ -98,10 +73,12 @@ public class AggressiveFishAI : MonoBehaviour
         if (distanceToPlayer <= biteRange)
         {
             rb.linearVelocity = Vector3.zero;
-
             if (biteCooldownTimer <= 0f)
             {
-                BitePlayer();
+                if (HealthSlider.Instance != null)
+                {
+                    HealthSlider.Instance.AddHealth(-biteDamage);
+                }
                 biteCooldownTimer = biteInterval;
             }
         }
@@ -113,39 +90,24 @@ public class AggressiveFishAI : MonoBehaviour
         return direction;
     }
 
-    void BitePlayer()
-    {
-        if (HealthSlider.Instance != null)
-        {
-            HealthSlider.Instance.AddHealth(-biteDamage);
-        }
-
-    }
-
     Vector3 Wander()
     {
-        Vector3 toTarget = wanderTarget - transform.position;
-        toTarget.z = 0f;
-
-        wanderWaitTimer -= Time.fixedDeltaTime;
-        if (toTarget.magnitude <= arriveDistance || wanderWaitTimer <= 0f)
+        changeDirTimer -= Time.fixedDeltaTime;
+        if (changeDirTimer <= 0f)
         {
-            PickNewWanderTarget();
-            toTarget = wanderTarget - transform.position;
-            toTarget.z = 0f;
+            PickNewWanderDirection();
         }
 
-        Vector3 direction = toTarget.normalized;
-        rb.linearVelocity = direction * wanderSpeed;
-        return direction;
+        rb.linearVelocity = wanderDirection * wanderSpeed;
+        return wanderDirection;
     }
 
-    void PickNewWanderTarget()
+    void PickNewWanderDirection()
     {
-        float x = Random.Range(-areaSize.x * 0.5f, areaSize.x * 0.5f);
-        float y = Random.Range(-areaSize.y * 0.5f, areaSize.y * 0.5f);
-        wanderTarget = centerPos + new Vector3(x, y, 0f);
-        wanderWaitTimer = Random.Range(minWaitTime, maxWaitTime);
+
+        Vector2 randomDir = Random.insideUnitCircle.normalized;
+        wanderDirection = new Vector3(randomDir.x, randomDir.y, 0f);
+        changeDirTimer = changeDirectionInterval;
     }
 
     void FaceDirection(Vector3 moveDirection)
