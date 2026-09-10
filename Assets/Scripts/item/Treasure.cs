@@ -1,11 +1,36 @@
 using UnityEngine;
 
+[RequireComponent(typeof(Collider))]
 public class Treasure : MonoBehaviour
 {
-    // Update is called once per frame
-    void Update()
+    public string treasureId;
+
+    public int levelIndex;
+
+    void Start()
     {
-        //transform.Rotate(new Vector3(30,45,60)*Time.deltaTime);
+        if (string.IsNullOrEmpty(treasureId))
+        {
+            Debug.LogWarning($"Treasure on {gameObject.name} 没有设置 treasureId！");
+            return;
+        }
+
+        if (GameProgress.IsTreasureCollected(treasureId))
+        {
+            Destroy(gameObject);
+        }
+    }
+
+    public void Collect()
+    {
+        if (string.IsNullOrEmpty(treasureId)) return;
+        if (GameProgress.IsTreasureCollected(treasureId)) return; 
+
+        GameProgress.MarkTreasureCollected(treasureId);
+
+        int newCount = GameProgress.GetTreasureAmount(levelIndex) + 1;
+        GameProgress.SaveTreasureAmount(levelIndex, newCount);
+
+        Destroy(gameObject);
     }
 }
-

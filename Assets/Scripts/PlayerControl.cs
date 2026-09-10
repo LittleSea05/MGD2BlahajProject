@@ -73,12 +73,14 @@ public class PlayerControl : MonoBehaviour
     void OnTriggerEnter(Collider other)
     {
         if (other.gameObject.CompareTag("Treasure"))
-    {
-        Destroy(other.gameObject);
-        collectTreasure += 1;
-        CollectManager.Instance.showPickUp();
-        GameProgress.SaveTreasureAmount(currentLevelIndex, (int)collectTreasure);
-    }
+        {
+            Treasure treasure = other.GetComponent<Treasure>();
+            if (treasure != null)
+            {
+                treasure.Collect();
+                CollectManager.Instance.showPickUp();
+            }
+        }
     else if (other.gameObject.CompareTag("NPCFish"))
     {
         Fish fish = other.GetComponent<Fish>();
@@ -92,8 +94,8 @@ public class PlayerControl : MonoBehaviour
         }
         else
         {
-            // 玩家更小，被反咬一口，具体逻辑你们自己定
-            // 比如：PlayerHealth.Instance.TakeDamage(...)
+            // 
+            // 
         }
     }else if (other.gameObject.CompareTag("Boss"))
     {
@@ -102,7 +104,7 @@ public class PlayerControl : MonoBehaviour
 
     if (boss.IsWeak)
     {
-        // 已经虚弱了，吃掉它
+        
         boss.GetEaten();
     }
     else if (RushButton.IsRushing)

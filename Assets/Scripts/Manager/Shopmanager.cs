@@ -14,19 +14,19 @@ public class ShopManager : MonoBehaviour
     [Header("Coins")]
     public ScoreDisplay scoreDisplay;
 
-    [Header("速度(Speed)")]
+    [Header("speed")]
     public GameObject[] speedShellIcons = new GameObject[3];
     public Button speedUpgradeButton;
 
-    [Header("体型(Weight)")]
+    [Header("weight")]
     public GameObject[] weightShellIcons = new GameObject[3];
     public Button weightUpgradeButton;
 
-    [Header("生命值(Hunger)")]
+    [Header("hunger")]
     public GameObject[] hungerShellIcons = new GameObject[3];
     public Button hungerUpgradeButton;
 
-    [Header("升级确认弹窗")]
+    [Header("confirmation  ")]
     public GameObject confirmPanel;
     public TMP_Text confirmMessageText;
     public Button confirmYesButton;
@@ -55,7 +55,7 @@ public class ShopManager : MonoBehaviour
     void OpenConfirmPanel(UpgradeType type)
     {
         int cost = GetNextCost(type);
-        if (cost < 0) return; // 已满级，不弹窗
+        if (cost < 0) return; 
 
         pendingType = type;
         confirmMessageText.text = $"Upgrade{GetDisplayName(type)} need {cost} coins, are you sure you want to upgrade?";
@@ -86,7 +86,6 @@ public class ShopManager : MonoBehaviour
         confirmPanel.SetActive(false);
     }
 
-    /// <summary>刷新金币显示（交给ScoreDisplay）、三组贝壳图标、按钮是否可点</summary>
     void RefreshUI()
     {
         if (scoreDisplay != null)

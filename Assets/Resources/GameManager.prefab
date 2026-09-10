@@ -9,7 +9,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4199853564772531212}
-  - component: {fileID: 5501569933416948963}
   - component: {fileID: 5330114176929859445}
   - component: {fileID: 1184985344313977205}
   - component: {fileID: 7234864151301800779}
@@ -38,19 +37,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &5501569933416948963
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7886848357304556873}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 77da40e4413f4014e80cc4dad24bb3af, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::Test
-  testSlider: {fileID: 0}
 --- !u!114 &5330114176929859445
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -84,7 +70,8 @@ MonoBehaviour:
   maxHealth: 100
   drainRate: 5
   panel: {fileID: 0}
-  scoreDisplay: {fileID: 0}
+  currentLevelIndex: 0
+  scoreDisplay: {fileID: 1270928590441386398}
 --- !u!114 &7234864151301800779
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -141,3 +128,4 @@ MonoBehaviour:
   liveScoreText: {fileID: 0}
   finalScoreText: {fileID: 0}
   coinsText: {fileID: 0}
+  highScoreText: {fileID: 0}

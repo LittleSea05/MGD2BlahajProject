@@ -1,15 +1,6 @@
 using UnityEngine;
 
-/// <summary>
-/// 挂在"会主动攻击玩家"的NPC鱼身上，跟FishAI二选一用（不要两个都挂在同一条鱼上）。
-///
-/// 行为逻辑：
-/// 1. 平时在指定范围内随机游走（跟FishAI效果类似）
-/// 2. 玩家进入 detectRange 侦测范围后，改成径直朝玩家冲过去
-/// 3. 冲到 biteRange 咬击范围内，每隔 biteInterval 秒咬一口，
-///    通过 HealthSlider.Instance.AddHealth(负数) 扣血
-/// 4. 玩家跑出侦测范围后，重新回到游走状态
-/// </summary>
+
 [RequireComponent(typeof(Rigidbody))]
 public class AggressiveFishAI : MonoBehaviour
 {
@@ -48,11 +39,11 @@ public class AggressiveFishAI : MonoBehaviour
         centerPos = areaCenter != null ? areaCenter.position : transform.position;
         PickNewWanderTarget();
 
-        // 用Tag找玩家，确保你的玩家物体Tag是"Player"
         GameObject playerObj = GameObject.FindGameObjectWithTag("Player");
         if (playerObj != null)
         {
             player = playerObj.transform;
+            Debug.Log($"{gameObject.name} 找到玩家: {playerObj.name}");
         }
         else
         {
@@ -62,25 +53,36 @@ public class AggressiveFishAI : MonoBehaviour
 
     void FixedUpdate()
     {
+        if (player == null)
+        {
+            GameObject playerObj = GameObject.FindGameObjectWithTag("Player");
+            if (playerObj != null)
+            {
+                player = playerObj.transform;
+            }
+        }
+
         if (biteCooldownTimer > 0f)
         {
             biteCooldownTimer -= Time.fixedDeltaTime;
         }
 
-        float distanceToPlayer = player != null
-            ? Vector3.Distance(transform.position, player.position)
-            : Mathf.Infinity;
+        float distanceToPlayer = Mathf.Infinity;
+        if (player != null)
+        {
+            Vector3 diff = player.position - transform.position;
+            diff.z = 0f;
+            distanceToPlayer = diff.magnitude;   
+        }
 
         Vector3 moveDirection;
 
         if (player != null && distanceToPlayer <= detectRange)
         {
-            // 侦测到玩家：冲过去
             moveDirection = ChasePlayer(distanceToPlayer);
         }
         else
         {
-            // 没侦测到玩家：正常游走
             moveDirection = Wander();
         }
 
@@ -95,7 +97,6 @@ public class AggressiveFishAI : MonoBehaviour
 
         if (distanceToPlayer <= biteRange)
         {
-            // 已经贴近玩家：停下来咬，而不是继续往玩家身上撞
             rb.linearVelocity = Vector3.zero;
 
             if (biteCooldownTimer <= 0f)
@@ -119,8 +120,6 @@ public class AggressiveFishAI : MonoBehaviour
             HealthSlider.Instance.AddHealth(-biteDamage);
         }
 
-        // 想加咬击特效/音效的话可以在这里加，比如：
-        // Instantiate(biteEffectPrefab, player.position, Quaternion.identity);
     }
 
     Vector3 Wander()
@@ -166,7 +165,6 @@ public class AggressiveFishAI : MonoBehaviour
         transform.rotation = Quaternion.Lerp(transform.rotation, targetTilt, tiltSpeed * Time.fixedDeltaTime);
     }
 
-    // 方便在Scene视图里调试范围
     void OnDrawGizmosSelected()
     {
         Gizmos.color = Color.red;

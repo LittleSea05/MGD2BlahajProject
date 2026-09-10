@@ -28,9 +28,9 @@ public class LevelSelect : MonoBehaviour
     PreviousButton.SetActive(false);
     NextButton.SetActive(true);
 
-    ShowPanel(InfoPanel);     // 只播放一次动画
+    ShowPanel(InfoPanel);     
 
-    UpdateLevelButtons();     // 显示第一个关卡资讯
+    UpdateLevelButtons();    
 
     }
 
@@ -135,7 +135,7 @@ public void UpdateDescriptionText(int levelIndex)
     }
     else
     {
-        int required = GameProgress.RequiredAmount(levelIndex);
+        int required = GameProgress.RequiredAmount(levelIndex - 1);
         int collected = GameProgress.GetTreasureAmount(levelIndex - 1);
         TreasureText[levelIndex].text = $"Treasure Needed: {collected}/{required}";
     }

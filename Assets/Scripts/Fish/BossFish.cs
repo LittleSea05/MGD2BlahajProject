@@ -1,17 +1,5 @@
 using UnityEngine;
 
-/// <summary>
-/// Boss鱼。跟普通NPC鱼(Fish.cs)完全分开一套逻辑，因为规则不一样：
-/// - 平时玩家不能吃它，撞上去也没用（除非是rush状态）
-/// - 玩家用rush撞它，撞满 requiredHits 次后，它进入"虚弱"状态
-/// - 只有虚弱状态才能被玩家吃掉，吃掉后触发胜利面板（"大海恢复平静"）
-/// - 没进入虚弱状态之前，它会主动追击、撕咬玩家（类似AggressiveFishAI，但独立实现，
-///   方便boss以后加更多专属状态，不用跟普通攻击鱼共用一个脚本）
-///
-/// 场景设置要点：
-/// - 给这条鱼建一个新Tag，比如"Boss"，不要用"NPCFish"（不然会被当成普通鱼直接吃掉的判定抢走）
-/// - PlayerControl的OnTriggerEnter里要加一段专门处理"Boss"标签的逻辑（见下方说明）
-/// </summary>
 [RequireComponent(typeof(Rigidbody))]
 public class BossFish : MonoBehaviour
 {
@@ -44,7 +32,7 @@ public class BossFish : MonoBehaviour
     public GameObject victoryPanel;
     public int scoreValue = 500;
 
-    /// <summary>是否已经虚弱，虚弱了才能被吃掉。PlayerControl靠这个字段判断。</summary>
+   
     public bool IsWeak { get; private set; } = false;
 
     private Rigidbody rb;
@@ -91,7 +79,7 @@ public class BossFish : MonoBehaviour
 
         Vector3 moveDirection;
 
-        // 虚弱之后就不再主动攻击玩家了，只是慢悠悠地游走，方便玩家上去吃掉它
+        
         if (!IsWeak && player != null && distanceToPlayer <= detectRange)
         {
             moveDirection = ChasePlayer(distanceToPlayer);
@@ -180,35 +168,30 @@ public class BossFish : MonoBehaviour
         transform.rotation = Quaternion.Lerp(transform.rotation, targetTilt, tiltSpeed * Time.fixedDeltaTime);
     }
 
-    /// <summary>
-    /// 玩家在rush状态下撞到boss时调用（由PlayerControl触发）。
-    /// 撞满requiredHits次后boss进入虚弱状态。
-    /// </summary>
+
     public void OnRushHitByPlayer()
     {
-        if (IsWeak) return;              // 已经虚弱了，不用再撞
-        if (hitCooldownTimer > 0f) return; // 冷却中，避免一次贴脸判定好几下
+        if (IsWeak) return;             
+        if (hitCooldownTimer > 0f) return; 
 
         currentHits++;
         hitCooldownTimer = hitCooldown;
 
-        // 受击反馈可以加在这里，比如受击特效、屏幕震动、音效：
-        // Instantiate(hitEffectPrefab, transform.position, Quaternion.identity);
-
+     
         if (currentHits >= requiredHits)
         {
             IsWeak = true;
             
             Renderer renderer = GetComponent<Renderer>();
             renderer.material.color = Color.red;
-            // 进入虚弱状态的额外表现（比如换个"晕眩"贴图）也可以加在这里
+  
         }
     }
 
-    /// <summary>boss处于虚弱状态时，玩家把它吃掉，调用这个方法（由PlayerControl触发）。</summary>
+  
     public void GetEaten()
     {
-        if (!IsWeak) return; // 保险检查：没虚弱不能吃
+        if (!IsWeak) return;
 
         if (ScoreManager.Instance != null && scoreValue > 0)
         {

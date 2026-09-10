@@ -136,6 +136,7 @@ MonoBehaviour:
   growthOnEat: 0.05
   healthRestoreOnEat: 10
   eatEffectPrefab: {fileID: 0}
+  eatSfx: {fileID: 8300000, guid: 799b74bc38ee4384f9cbb192507bf9e1, type: 3}
 --- !u!54 &6182386166070436907
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -177,7 +178,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::FishAI
   areaCenter: {fileID: 0}
   areaSize: {x: 10, y: 6}
-  moveSpeed: 5
+  moveSpeed: 7
   tiltSpeed: 5
   maxTiltAngle: 15
   minWaitTime: 1.5
