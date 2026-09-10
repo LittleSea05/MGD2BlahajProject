@@ -2,11 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-/// <summary>
-/// 定时在场景范围内生成NPC鱼。挂在一个空物体上即可。
-/// 可以配置多种鱼的预制体（比如小鱼、中鱼），按权重随机生成，
-/// 制造出"有大有小"的效果，方便做体型比较的玩法。
-/// </summary>
+
 public class FishSpawner : MonoBehaviour
 {
     [System.Serializable]
@@ -14,6 +10,13 @@ public class FishSpawner : MonoBehaviour
     {
         public GameObject fishPrefab;
         public float weight = 1f;
+
+        [Tooltip("这种鱼同时最多存在几条，0 = 不限制")]
+        public int maxAlive = 0;
+
+        // 运行时追踪这种鱼当前场上存活的实例，不需要序列化
+        [System.NonSerialized]
+        public List<GameObject> aliveInstances = new List<GameObject>();
     }
 
     [Header("Types of Fish")]
@@ -40,8 +43,7 @@ public class FishSpawner : MonoBehaviour
         {
             yield return new WaitForSeconds(spawnInterval);
 
-            // 清理已经被吃掉/销毁的鱼
-            spawnedFish.RemoveAll(f => f == null);
+            CleanupDeadFish();
 
             if (spawnedFish.Count < maxFishCount && fishTypes.Count > 0)
             {
@@ -50,19 +52,28 @@ public class FishSpawner : MonoBehaviour
         }
     }
 
+    void CleanupDeadFish()
+    {
+        spawnedFish.RemoveAll(f => f == null);
+
+        foreach (var entry in fishTypes)
+        {
+            entry.aliveInstances.RemoveAll(f => f == null);
+        }
+    }
+
     void SpawnOneFish()
     {
-        GameObject prefab = PickWeightedRandom();
-        if (prefab == null) return;
+        FishEntry entry = PickWeightedEntry();
+        if (entry == null || entry.fishPrefab == null) return;
 
         Vector3 center = spawnAreaCenter != null ? spawnAreaCenter.position : transform.position;
         float x = Random.Range(-spawnAreaSize.x * 0.5f, spawnAreaSize.x * 0.5f);
         float y = Random.Range(-spawnAreaSize.y * 0.5f, spawnAreaSize.y * 0.5f);
         Vector3 spawnPos = center + new Vector3(x, y, 0f);
 
-        GameObject fish = Instantiate(prefab, spawnPos, Quaternion.identity);
+        GameObject fish = Instantiate(entry.fishPrefab, spawnPos, Quaternion.identity);
 
-        // 把生成范围同步给FishAI，让鱼在同一片区域里游走
         FishAI ai = fish.GetComponent<FishAI>();
         if (ai != null)
         {
@@ -71,22 +82,35 @@ public class FishSpawner : MonoBehaviour
         }
 
         spawnedFish.Add(fish);
+        entry.aliveInstances.Add(fish);
     }
 
-    GameObject PickWeightedRandom()
+    // 挑选一个"还没到达存活上限"的鱼种，再按权重随机
+    FishEntry PickWeightedEntry()
     {
         float totalWeight = 0f;
-        foreach (var entry in fishTypes) totalWeight += entry.weight;
-        if (totalWeight <= 0f) return null;
+        List<FishEntry> eligible = new List<FishEntry>();
+
+        foreach (var entry in fishTypes)
+        {
+            bool reachedCap = entry.maxAlive > 0 && entry.aliveInstances.Count >= entry.maxAlive;
+            if (reachedCap) continue;
+
+            eligible.Add(entry);
+            totalWeight += entry.weight;
+        }
+
+        if (eligible.Count == 0 || totalWeight <= 0f) return null;
 
         float roll = Random.Range(0f, totalWeight);
         float cumulative = 0f;
-        foreach (var entry in fishTypes)
+        foreach (var entry in eligible)
         {
             cumulative += entry.weight;
-            if (roll <= cumulative) return entry.fishPrefab;
+            if (roll <= cumulative) return entry;
         }
-        return fishTypes[fishTypes.Count - 1].fishPrefab;
+
+        return eligible[eligible.Count - 1];
     }
 
     void OnDrawGizmosSelected()

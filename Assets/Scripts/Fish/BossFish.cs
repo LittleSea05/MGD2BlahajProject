@@ -32,7 +32,9 @@ public class BossFish : MonoBehaviour
     public GameObject victoryPanel;
     public int scoreValue = 500;
 
-   
+    [Header("音效（可选）")]
+    public AudioClip eatSfx;
+
     public bool IsWeak { get; private set; } = false;
 
     private Rigidbody rb;
@@ -52,8 +54,6 @@ public class BossFish : MonoBehaviour
                        | RigidbodyConstraints.FreezeRotationX
                        | RigidbodyConstraints.FreezeRotationY;
 
-        Renderer renderer = GetComponent<Renderer>();
-
         centerPos = areaCenter != null ? areaCenter.position : transform.position;
         PickNewWanderTarget();
 
@@ -64,22 +64,31 @@ public class BossFish : MonoBehaviour
         }
         else
         {
-            Debug.LogWarning("BossFish: 场景里找不到Tag为Player的物体，追击/撕咬行为不会生效。");
+            Debug.LogWarning("BossFish: 场景里找不到Tag为Player的物体，追击/撕咬行为不会生效，将在FixedUpdate中持续重试。");
         }
     }
 
     void FixedUpdate()
     {
+        if (player == null)
+        {
+            GameObject playerObj = GameObject.FindGameObjectWithTag("Player");
+            if (playerObj != null) player = playerObj.transform;
+        }
+
         if (hitCooldownTimer > 0f) hitCooldownTimer -= Time.fixedDeltaTime;
         if (biteCooldownTimer > 0f) biteCooldownTimer -= Time.fixedDeltaTime;
 
-        float distanceToPlayer = player != null
-            ? Vector3.Distance(transform.position, player.position)
-            : Mathf.Infinity;
+        float distanceToPlayer = Mathf.Infinity;
+        if (player != null)
+        {
+            Vector3 diff = player.position - transform.position;
+            diff.z = 0f;
+            distanceToPlayer = diff.magnitude;
+        }
 
         Vector3 moveDirection;
 
-        
         if (!IsWeak && player != null && distanceToPlayer <= detectRange)
         {
             moveDirection = ChasePlayer(distanceToPlayer);
@@ -168,30 +177,34 @@ public class BossFish : MonoBehaviour
         transform.rotation = Quaternion.Lerp(transform.rotation, targetTilt, tiltSpeed * Time.fixedDeltaTime);
     }
 
-
     public void OnRushHitByPlayer()
     {
-        if (IsWeak) return;             
-        if (hitCooldownTimer > 0f) return; 
+        if (IsWeak) return;
+        if (hitCooldownTimer > 0f) return;
 
         currentHits++;
         hitCooldownTimer = hitCooldown;
 
-     
         if (currentHits >= requiredHits)
         {
             IsWeak = true;
-            
+
             Renderer renderer = GetComponent<Renderer>();
-            renderer.material.color = Color.red;
-  
+            if (renderer != null)
+            {
+                renderer.material.color = Color.red;
+            }
         }
     }
 
-  
     public void GetEaten()
     {
         if (!IsWeak) return;
+
+        if (AudioManager.Instance != null && eatSfx != null)
+        {
+            AudioManager.Instance.PlaySFX(eatSfx);
+        }
 
         if (ScoreManager.Instance != null && scoreValue > 0)
         {

@@ -186,7 +186,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ca2e1eef6c7a71948a698ac76e7513ae, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Fish
-  fishSize: 3
+  fishSize: 2
   scoreValue: 30
   growthOnEat: 20
   healthRestoreOnEat: 10
@@ -233,8 +233,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::AggressiveFishAI
   detectRange: 50
   chaseSpeed: 6
-  biteRange: 2
-  biteDamage: 30
+  biteRange: 7
+  biteDamage: 15
   biteInterval: 1
   wanderSpeed: 4
   changeDirectionInterval: 2

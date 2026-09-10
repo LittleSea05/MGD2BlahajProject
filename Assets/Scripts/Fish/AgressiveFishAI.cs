@@ -1,9 +1,7 @@
 using UnityEngine;
 
-/// <summary>
-/// 简化版：平时朝一个随机方向慢慢游，隔几秒换个方向；
-/// 玩家进入侦测范围就直接冲过去，贴近了就咬一口（带冷却）。
-/// </summary>
+
+
 [RequireComponent(typeof(Rigidbody))]
 public class AggressiveFishAI : MonoBehaviour
 {

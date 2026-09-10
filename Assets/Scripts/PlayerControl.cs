@@ -28,6 +28,13 @@ public class PlayerControl : MonoBehaviour
                        | RigidbodyConstraints.FreezeRotationY;
 
         collectTreasure = 0;
+
+            // 应用速度升级加成
+        moveSpeed += PlayerUpgradeData.GetSpeedBonus();
+        rushSpeed += PlayerUpgradeData.GetSpeedBonus();
+
+        // 应用体型升级加成（如果Weight商店项是用来增大体型的）
+        currentSize += PlayerUpgradeData.GetWeightBonus();
     }
 
     void FixedUpdate()
