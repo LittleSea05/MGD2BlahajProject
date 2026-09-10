@@ -74,7 +74,7 @@ GameObject:
   - component: {fileID: 7495723757860870359}
   m_Layer: 0
   m_Name: SharkV1
-  m_TagString: Untagged
+  m_TagString: NPCFish
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -187,9 +187,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Fish
   fishSize: 2
-  scoreValue: 10
-  growthOnEat: 0.05
-  healthRestoreOnEat: 5
+  scoreValue: 30
+  growthOnEat: 20
+  healthRestoreOnEat: 10
   eatEffectPrefab: {fileID: 0}
   eatSfx: {fileID: 8300000, guid: 799b74bc38ee4384f9cbb192507bf9e1, type: 3}
 --- !u!54 &7684176466082907498
@@ -231,14 +231,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bafa4781607589a4d81a701d1900b267, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::AggressiveFishAI
-  detectRange: 4
-  chaseSpeed: 4
-  biteRange: 1
-  biteDamage: 10
+  detectRange: 10
+  chaseSpeed: 6
+  biteRange: 2
+  biteDamage: 30
   biteInterval: 1
   areaCenter: {fileID: 7475154551668999789}
-  areaSize: {x: 10, y: 6}
-  wanderSpeed: 2
+  areaSize: {x: 20, y: 20}
+  wanderSpeed: 4
   minWaitTime: 1.5
   maxWaitTime: 4
   arriveDistance: 0.3

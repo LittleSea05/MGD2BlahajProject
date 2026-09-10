@@ -1,12 +1,6 @@
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
-
-/// <summary>
-/// 商城UI逻辑（贝壳等级显示 + 升级确认弹窗版）。
-/// 金币数字显示统一交给ScoreDisplay，这个脚本不再自己拿Text设置金额。
-/// 三条升级线：速度(Speed)、体型(Weight)、生命值(Hunger)，每条都是3级。
-/// </summary>
 public class ShopManager : MonoBehaviour
 {
     private enum UpgradeType { Speed, Weight, Hunger }
@@ -58,7 +52,7 @@ public class ShopManager : MonoBehaviour
         if (cost < 0) return; 
 
         pendingType = type;
-        confirmMessageText.text = $"Upgrade{GetDisplayName(type)} need {cost} coins, are you sure you want to upgrade?";
+        confirmMessageText.text = $"Upgrade{GetDisplayName(type)} need {cost} coins, do you want to upgrade?";
         confirmPanel.SetActive(true);
     }
 

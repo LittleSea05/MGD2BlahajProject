@@ -5,7 +5,7 @@ using UnityEngine;
 public class AggressiveFishAI : MonoBehaviour
 {
     [Header("Attack")]
-    public float detectRange = 5f;
+    public float detectRange = 10f;
     public float chaseSpeed = 5f;
     public float biteRange = 1f;
     public float biteDamage = 10f;
@@ -14,7 +14,7 @@ public class AggressiveFishAI : MonoBehaviour
     [Header("Wander")]
     public Transform areaCenter;
     public Vector2 areaSize = new Vector2(10f, 6f);
-    public float wanderSpeed = 2f;
+    public float wanderSpeed = 3f;
     public float minWaitTime = 1.5f;
     public float maxWaitTime = 4f;
     public float arriveDistance = 0.3f;
@@ -43,7 +43,7 @@ public class AggressiveFishAI : MonoBehaviour
         if (playerObj != null)
         {
             player = playerObj.transform;
-            Debug.Log($"{gameObject.name} 找到玩家: {playerObj.name}");
+            Debug.Log($"{gameObject.name} FindPlayer {playerObj.name}");
         }
         else
         {

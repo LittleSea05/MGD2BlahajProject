@@ -51,10 +51,10 @@ CapsuleCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Radius: 0.40877822
-  m_Height: 5.2252464
+  m_Radius: 0.937154
+  m_Height: 6.6012244
   m_Direction: 0
-  m_Center: {x: -0.17732811, y: 0.11823246, z: 0}
+  m_Center: {x: -0.12779364, y: 0.19528691, z: 0}
 --- !u!1 &1673067104563739017
 GameObject:
   m_ObjectHideFlags: 0
@@ -74,7 +74,7 @@ GameObject:
   - component: {fileID: -4648993103558334189}
   m_Layer: 0
   m_Name: SharkV2
-  m_TagString: Untagged
+  m_TagString: NPCFish
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -186,10 +186,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ca2e1eef6c7a71948a698ac76e7513ae, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Fish
-  fishSize: 2
-  scoreValue: 40
-  growthOnEat: 0.05
-  healthRestoreOnEat: 15
+  fishSize: 3
+  scoreValue: 50
+  growthOnEat: 20
+  healthRestoreOnEat: 20
   eatEffectPrefab: {fileID: 0}
   eatSfx: {fileID: 8300000, guid: 799b74bc38ee4384f9cbb192507bf9e1, type: 3}
 --- !u!54 &7810136961466399294
@@ -234,11 +234,11 @@ MonoBehaviour:
   detectRange: 10
   chaseSpeed: 7
   biteRange: 3
-  biteDamage: 20
+  biteDamage: 50
   biteInterval: 1
   areaCenter: {fileID: 5451374406614882991}
-  areaSize: {x: 10, y: 6}
-  wanderSpeed: 2
+  areaSize: {x: 20, y: 20}
+  wanderSpeed: 4
   minWaitTime: 1.5
   maxWaitTime: 4
   arriveDistance: 0.3

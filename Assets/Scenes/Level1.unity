@@ -1923,11 +1923,11 @@ RectTransform:
   m_Children:
   - {fileID: 154700726}
   - {fileID: 1161998961}
-  m_Father: {fileID: 1765528905}
+  m_Father: {fileID: 2083486731}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0.000045776367, y: -75.440956}
+  m_AnchoredPosition: {x: 0.00012207031, y: -75.44095}
   m_SizeDelta: {x: 1500, y: 900}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1148405144
@@ -2315,14 +2315,6 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 448626085065673378, guid: 7c0253a2720a9df4da6e45e82ab3ffe8, type: 3}
-      propertyPath: coinsText
-      value: 
-      objectReference: {fileID: 870834194}
-    - target: {fileID: 448626085065673378, guid: 7c0253a2720a9df4da6e45e82ab3ffe8, type: 3}
-      propertyPath: liveScoreText
-      value: 
-      objectReference: {fileID: 870834196}
     - target: {fileID: 578339573131127130, guid: 7c0253a2720a9df4da6e45e82ab3ffe8, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
@@ -2443,30 +2435,10 @@ PrefabInstance:
       propertyPath: m_AnchorMin.x
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 6091151768416308597, guid: 7c0253a2720a9df4da6e45e82ab3ffe8, type: 3}
-      propertyPath: m_AnchoredPosition.y
-      value: 12
-      objectReference: {fileID: 0}
     - target: {fileID: 7451698329410439952, guid: 7c0253a2720a9df4da6e45e82ab3ffe8, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 1652295123}
-    - target: {fileID: 7451698329410439952, guid: 7c0253a2720a9df4da6e45e82ab3ffe8, type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: MainMenu
-      objectReference: {fileID: 0}
-    - target: {fileID: 7455441399229920058, guid: 7c0253a2720a9df4da6e45e82ab3ffe8, type: 3}
-      propertyPath: m_AnchoredPosition.y
-      value: -30.161072
-      objectReference: {fileID: 0}
-    - target: {fileID: 7941676449767557063, guid: 7c0253a2720a9df4da6e45e82ab3ffe8, type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7953213258185169435, guid: 7c0253a2720a9df4da6e45e82ab3ffe8, type: 3}
-      propertyPath: m_AnchoredPosition.y
-      value: -112
-      objectReference: {fileID: 0}
     - target: {fileID: 8394997412982008775, guid: 7c0253a2720a9df4da6e45e82ab3ffe8, type: 3}
       propertyPath: m_AnchorMax.x
       value: 0
@@ -2476,10 +2448,9 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
-    m_RemovedGameObjects:
-    - {fileID: 8962493409754864302, guid: 7c0253a2720a9df4da6e45e82ab3ffe8, type: 3}
+    m_RemovedGameObjects: []
     m_AddedGameObjects:
-    - targetCorrespondingSourceObject: {fileID: 5011519747501365537, guid: 7c0253a2720a9df4da6e45e82ab3ffe8, type: 3}
+    - targetCorrespondingSourceObject: {fileID: 1195552124792351705, guid: 7c0253a2720a9df4da6e45e82ab3ffe8, type: 3}
       insertIndex: -1
       addedObject: {fileID: 1148405143}
     m_AddedComponents: []
@@ -3257,10 +3228,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: InGameOptionCanvas
       objectReference: {fileID: 0}
-    - target: {fileID: 5534573519543058019, guid: 49c0b698bd13e2742a2d72e2286f21bd, type: 3}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 6139439638638336390, guid: 49c0b698bd13e2742a2d72e2286f21bd, type: 3}
       propertyPath: m_AnchorMax.y
       value: 0
@@ -3564,11 +3531,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1738892339}
   m_CullTransparentMesh: 1
---- !u!224 &1765528905 stripped
-RectTransform:
-  m_CorrespondingSourceObject: {fileID: 5011519747501365537, guid: 7c0253a2720a9df4da6e45e82ab3ffe8, type: 3}
-  m_PrefabInstance: {fileID: 1353235758}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1823231714
 GameObject:
   m_ObjectHideFlags: 0
@@ -4066,6 +4028,11 @@ MonoBehaviour:
   damageAmount: 10
   playerTag: Player
   disappearDuration: 0.4
+--- !u!224 &2083486731 stripped
+RectTransform:
+  m_CorrespondingSourceObject: {fileID: 1195552124792351705, guid: 7c0253a2720a9df4da6e45e82ab3ffe8, type: 3}
+  m_PrefabInstance: {fileID: 1353235758}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &2096972730
 GameObject:
   m_ObjectHideFlags: 0
