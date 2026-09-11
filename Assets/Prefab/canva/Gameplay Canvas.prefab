@@ -856,7 +856,6 @@ GameObject:
   - component: {fileID: 5746490498117583171}
   - component: {fileID: 179797885307525293}
   - component: {fileID: 8036483652998330663}
-  - component: {fileID: 5769594450186471242}
   m_Layer: 5
   m_Name: rushButton (1)
   m_TagString: Untagged
@@ -966,18 +965,6 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls: []
---- !u!114 &5769594450186471242
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1671913915852874510}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e4f16c5a727f7204bb435fdf59ae9e79, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::RushButton
 --- !u!1 &1806335314867351913
 GameObject:
   m_ObjectHideFlags: 0
