@@ -1,4 +1,3 @@
-
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -19,6 +18,9 @@ public class AudioManager : MonoBehaviour
     public AudioSource musicSource;
     public AudioSource sfxSource;
     public AudioSource ambientSource;
+
+    [Header("Button Click")]
+    public AudioClip defaultClickSfx;
 
     private const string MUSIC_VOLUME_KEY = "MusicVolume";
     private const string SFX_VOLUME_KEY = "SFXVolume";
@@ -106,6 +108,12 @@ public class AudioManager : MonoBehaviour
         sfxSource.PlayOneShot(clip);
     }
 
+    public void PlayButtonClickSFX(AudioClip clip = null)
+    {
+        AudioClip clipToPlay = clip != null ? clip : defaultClickSfx;
+        PlaySFX(clipToPlay);
+    }
+
     public void SetSFXVolume(float value)
     {
         value = Mathf.Clamp01(value);
@@ -173,4 +181,3 @@ public class AudioManager : MonoBehaviour
         SceneManager.sceneLoaded -= OnSceneLoaded;
     }
 }
-

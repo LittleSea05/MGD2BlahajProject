@@ -1,4 +1,5 @@
 using UnityEngine;
+using System.Collections;
 
 [RequireComponent(typeof(Rigidbody))]
 public class BossFish : MonoBehaviour
@@ -15,6 +16,7 @@ public class BossFish : MonoBehaviour
     public float detectRange = 8f;
     public float chaseSpeed = 3.5f;
     public float biteRange = 1.2f;
+    public Transform bitePoint;
     public float biteDamage = 20f;
     public float biteInterval = 1.5f;
 
@@ -32,13 +34,17 @@ public class BossFish : MonoBehaviour
     public GameObject victoryPanel;
     public int scoreValue = 500;
 
-    [Header("音效（可选）")]
     public AudioClip eatSfx;
+    public AudioClip biteSfx;
+
+    public Color hitFlashColor = Color.yellow;
+    public float hitFlashDuration = 1f;
+
+    public Transform player;
 
     public bool IsWeak { get; private set; } = false;
 
     private Rigidbody rb;
-    private Transform player;
     private Vector3 centerPos;
     private Vector3 wanderTarget;
     private float wanderWaitTimer;
@@ -46,6 +52,9 @@ public class BossFish : MonoBehaviour
     private float hitCooldownTimer;
     private int currentHits = 0;
     private bool facingRight = true;
+    private Renderer bossRenderer;
+    private Color originalColor;
+    private Coroutine flashCoroutine;
 
     void Start()
     {
@@ -54,28 +63,28 @@ public class BossFish : MonoBehaviour
                        | RigidbodyConstraints.FreezeRotationX
                        | RigidbodyConstraints.FreezeRotationY;
 
+        bossRenderer = GetComponent<Renderer>();
+        if (bossRenderer != null)
+        {
+            originalColor = bossRenderer.material.color;
+        }
+
         centerPos = areaCenter != null ? areaCenter.position : transform.position;
         PickNewWanderTarget();
 
-        GameObject playerObj = GameObject.FindGameObjectWithTag("Player");
-        if (playerObj != null)
+        if (player == null)
         {
-            player = playerObj.transform;
-        }
-        else
-        {
-            Debug.LogWarning("BossFish: 场景里找不到Tag为Player的物体，追击/撕咬行为不会生效，将在FixedUpdate中持续重试。");
+            GameObject playerObj = GameObject.FindGameObjectWithTag("Player");
+            if (playerObj != null)
+            {
+                player = playerObj.transform;
+            }
+
         }
     }
 
     void FixedUpdate()
     {
-        if (player == null)
-        {
-            GameObject playerObj = GameObject.FindGameObjectWithTag("Player");
-            if (playerObj != null) player = playerObj.transform;
-        }
-
         if (hitCooldownTimer > 0f) hitCooldownTimer -= Time.fixedDeltaTime;
         if (biteCooldownTimer > 0f) biteCooldownTimer -= Time.fixedDeltaTime;
 
@@ -108,7 +117,12 @@ public class BossFish : MonoBehaviour
         toPlayer.z = 0f;
         Vector3 direction = toPlayer.normalized;
 
-        if (distanceToPlayer <= biteRange)
+        Vector3 biteOrigin = bitePoint != null ? bitePoint.position : transform.position;
+        Vector3 biteDiff = player.position - biteOrigin;
+        biteDiff.z = 0f;
+        float distanceToBitePoint = biteDiff.magnitude;
+
+        if (distanceToBitePoint <= biteRange)
         {
             rb.linearVelocity = Vector3.zero;
 
@@ -131,6 +145,11 @@ public class BossFish : MonoBehaviour
         if (HealthSlider.Instance != null)
         {
             HealthSlider.Instance.AddHealth(-biteDamage);
+        }
+
+        if (AudioManager.Instance != null && biteSfx != null)
+        {
+            AudioManager.Instance.PlaySFX(biteSfx);
         }
     }
 
@@ -188,13 +207,30 @@ public class BossFish : MonoBehaviour
         if (currentHits >= requiredHits)
         {
             IsWeak = true;
-
-            Renderer renderer = GetComponent<Renderer>();
-            if (renderer != null)
-            {
-                renderer.material.color = Color.red;
-            }
         }
+
+        TriggerHitFlash();
+    }
+
+    void TriggerHitFlash()
+    {
+        if (bossRenderer == null) return;
+
+        if (flashCoroutine != null)
+        {
+            StopCoroutine(flashCoroutine);
+        }
+        flashCoroutine = StartCoroutine(HitFlashRoutine());
+    }
+
+    IEnumerator HitFlashRoutine()
+    {
+        bossRenderer.material.color = hitFlashColor;
+
+        yield return new WaitForSeconds(hitFlashDuration);
+        bossRenderer.material.color = IsWeak ? Color.red : originalColor;
+
+        flashCoroutine = null;
     }
 
     public void GetEaten()
@@ -224,7 +260,9 @@ public class BossFish : MonoBehaviour
     {
         Gizmos.color = Color.magenta;
         Gizmos.DrawWireSphere(transform.position, detectRange);
+
+        Vector3 biteOrigin = bitePoint != null ? bitePoint.position : transform.position;
         Gizmos.color = Color.red;
-        Gizmos.DrawWireSphere(transform.position, biteRange);
+        Gizmos.DrawWireSphere(biteOrigin, biteRange);
     }
 }

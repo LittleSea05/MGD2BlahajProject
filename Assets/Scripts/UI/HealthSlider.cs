@@ -61,6 +61,18 @@ public class HealthSlider : MonoBehaviour
 
     public void AddHealth(float amount)
     {
+        if(amount<0f)
+        {
+            if(PlayerHitEffect.Instance != null)
+            {
+                PlayerHitEffect.Instance.TriggerHitEffect();
+            }
+            if(PlayerDamageFlash.Instance != null)
+            {
+                PlayerDamageFlash.Instance.TriggerDamageFlash();
+            }
+        }
+        
         currentHealth = Mathf.Clamp(currentHealth + amount, 0f, maxHealth);
         UpdateSlider();
     }

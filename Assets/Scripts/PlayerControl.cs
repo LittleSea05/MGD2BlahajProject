@@ -33,7 +33,6 @@ public class PlayerControl : MonoBehaviour
         moveSpeed += PlayerUpgradeData.GetSpeedBonus();
         rushSpeed += PlayerUpgradeData.GetSpeedBonus();
 
-        // 应用体型升级加成（如果Weight商店项是用来增大体型的）
         currentSize += PlayerUpgradeData.GetWeightBonus();
     }
 
@@ -95,32 +94,36 @@ public class PlayerControl : MonoBehaviour
 
         if (currentSize >= fish.fishSize)
         {
-            // 玩家更大，吃掉它
             currentSize += fish.growthOnEat;
             fish.GetEaten();
+
+            if (PlayerHitEffect.Instance != null)
+            {
+                PlayerHitEffect.Instance.TriggerHitEffect();
+            }
         }
-        else
-        {
-            // 
-            // 
-        }
+
     }else if (other.gameObject.CompareTag("Boss"))
     {
-    BossFish boss = other.GetComponent<BossFish>();
-    if (boss == null) return;
+        BossFish boss = other.GetComponent<BossFish>();
+        if (boss == null) return;
 
-    if (boss.IsWeak)
-    {
-        
-        boss.GetEaten();
-    }
-    else if (RushButton.IsRushing)
-    {
+        if (boss.IsWeak)
+        {
+            
+            boss.GetEaten();
+            if (PlayerHitEffect.Instance != null)
+            {
+                PlayerHitEffect.Instance.TriggerHitEffect();
+            }
+        }
+        else if (RushButton.IsRushing)
+        {
 
-        boss.OnRushHitByPlayer();
-    }
+            boss.OnRushHitByPlayer();
+        }
 
-    }
+        }
     }
 }
 

@@ -1,6 +1,7 @@
 using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
+using TMPro;
 
 public class VolumeDisc : MonoBehaviour,
     IPointerDownHandler,
@@ -8,7 +9,7 @@ public class VolumeDisc : MonoBehaviour,
     IDragHandler
 {
     [Header("Volume")]
-    [Range(0,1)]
+    [Range(0, 1)]
     public float volume = 1f;
 
     [Header("Rotation")]
@@ -18,36 +19,39 @@ public class VolumeDisc : MonoBehaviour,
 
     public Toggle muteToggle;
 
+    [Header("UI tell volume value")]
+    public TMP_Text volumeText;
+
     void Start()
     {
+        if (AudioManager.Instance != null)
+        {
+            volume = AudioManager.Instance.GetMusicVolume();
+        }
 
-        muteToggle.onValueChanged.AddListener(OnMuteToggle);
+        if (muteToggle != null)
+        {
+            muteToggle.SetIsOnWithoutNotify(volume <= 0f);
+            muteToggle.onValueChanged.AddListener(OnMuteToggle);
+        }
 
+        UpdateVolumeText();
     }
 
     void OnMuteToggle(bool isMuted)
     {
-        if (isMuted)
-        {
-            volume = 0f;
-        }
-        else
-        {
-            volume = 1f;
-        }
+        volume = isMuted ? 0f : 1f;
+
+        ApplyVolume();
+        UpdateVolumeText();
     }
 
     void Update()
     {
-
         if (!dragging && volume > 0)
         {
-            transform.Rotate(0,0,-maxSpinSpeed * volume * Time.deltaTime);
+            transform.Rotate(0, 0, -maxSpinSpeed * volume * Time.deltaTime);
         }
-
-      
-         AudioListener.volume = volume;
-
     }
 
     public void OnPointerDown(PointerEventData eventData)
@@ -70,16 +74,25 @@ public class VolumeDisc : MonoBehaviour,
 
         float angle = Mathf.Atan2(dir.y, dir.x) * Mathf.Rad2Deg;
 
-        transform.rotation = Quaternion.Euler(0,0,angle);
+        transform.rotation = Quaternion.Euler(0, 0, angle);
 
-
-
-        float normalized =
-            Mathf.InverseLerp(-180,180,angle);
-
+        float normalized = Mathf.InverseLerp(-180, 180, angle);
         volume = normalized;
 
-  
-         AudioListener.volume = volume;
+        ApplyVolume();
+        UpdateVolumeText();
+    }
+
+    void ApplyVolume()
+    {
+        AudioManager.Instance?.SetMusicVolume(volume);
+    }
+
+    void UpdateVolumeText()
+    {
+        if (volumeText == null) return;
+
+        int percent = Mathf.RoundToInt(volume * 100f);
+        volumeText.text = $"Volume: {percent}%";
     }
 }

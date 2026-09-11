@@ -239,6 +239,7 @@ GameObject:
   - component: {fileID: 155276720}
   - component: {fileID: 155276719}
   - component: {fileID: 155276718}
+  - component: {fileID: 155276721}
   m_Layer: 5
   m_Name: Level2
   m_TagString: Untagged
@@ -261,11 +262,11 @@ RectTransform:
   - {fileID: 746427177}
   m_Father: {fileID: 1523321204}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 205, y: 16}
+  m_AnchorMin: {x: 1, y: 0}
+  m_AnchorMax: {x: 1, y: 0}
+  m_AnchoredPosition: {x: 280, y: 91.000046}
   m_SizeDelta: {x: 450, y: 150}
-  m_Pivot: {x: 0.5, y: 0.5}
+  m_Pivot: {x: 1, y: 0}
 --- !u!114 &155276718
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -360,6 +361,19 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 155276716}
   m_CullTransparentMesh: 1
+--- !u!114 &155276721
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 155276716}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2267fb9799d1e754a929d22ad3172674, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::ButtonSFX
+  clickSfx: {fileID: 0}
 --- !u!4 &170863796 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 400000, guid: 19497d68b37d2594fb3e269601d333be, type: 3}
@@ -1171,6 +1185,7 @@ GameObject:
   - component: {fileID: 411595856}
   - component: {fileID: 411595855}
   - component: {fileID: 411595854}
+  - component: {fileID: 411595857}
   m_Layer: 5
   m_Name: Level3
   m_TagString: Untagged
@@ -1193,11 +1208,11 @@ RectTransform:
   - {fileID: 812880419}
   m_Father: {fileID: 1523321204}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 205, y: 16}
+  m_AnchorMin: {x: 1, y: 0}
+  m_AnchorMax: {x: 1, y: 0}
+  m_AnchoredPosition: {x: 280, y: 91.000046}
   m_SizeDelta: {x: 450, y: 150}
-  m_Pivot: {x: 0.5, y: 0.5}
+  m_Pivot: {x: 1, y: 0}
 --- !u!114 &411595854
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1292,6 +1307,19 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 411595852}
   m_CullTransparentMesh: 1
+--- !u!114 &411595857
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 411595852}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2267fb9799d1e754a929d22ad3172674, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::ButtonSFX
+  clickSfx: {fileID: 0}
 --- !u!4 &457260373 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 3324890940963894864, guid: 8cbf4c45999cf2c44b0d824910086cf4, type: 3}
@@ -1427,6 +1455,7 @@ GameObject:
   - component: {fileID: 524938336}
   - component: {fileID: 524938335}
   - component: {fileID: 524938334}
+  - component: {fileID: 524938337}
   m_Layer: 5
   m_Name: Mainmenu
   m_TagString: Untagged
@@ -1548,6 +1577,19 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 524938332}
   m_CullTransparentMesh: 1
+--- !u!114 &524938337
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 524938332}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2267fb9799d1e754a929d22ad3172674, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::ButtonSFX
+  clickSfx: {fileID: 0}
 --- !u!1 &542270656
 GameObject:
   m_ObjectHideFlags: 0
@@ -1560,6 +1602,7 @@ GameObject:
   - component: {fileID: 542270660}
   - component: {fileID: 542270659}
   - component: {fileID: 542270658}
+  - component: {fileID: 542270661}
   m_Layer: 5
   m_Name: previouslevel (1)
   m_TagString: Untagged
@@ -1584,7 +1627,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0.5}
   m_AnchorMax: {x: 0, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 0.000061035156, y: 0}
   m_SizeDelta: {x: 58.26013, y: 52.5068}
   m_Pivot: {x: 0, y: 0.5}
 --- !u!114 &542270658
@@ -1681,6 +1724,19 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 542270656}
   m_CullTransparentMesh: 1
+--- !u!114 &542270661
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 542270656}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2267fb9799d1e754a929d22ad3172674, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::ButtonSFX
+  clickSfx: {fileID: 0}
 --- !u!1 &555237927
 GameObject:
   m_ObjectHideFlags: 0
@@ -1946,7 +2002,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 758, y: 159}
+  m_AnchoredPosition: {x: 758, y: 184}
   m_SizeDelta: {x: 200, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &616281217
@@ -2814,6 +2870,7 @@ GameObject:
   - component: {fileID: 878043804}
   - component: {fileID: 878043803}
   - component: {fileID: 878043802}
+  - component: {fileID: 878043805}
   m_Layer: 5
   m_Name: nextlevel
   m_TagString: Untagged
@@ -2837,7 +2894,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 0.5}
   m_AnchorMax: {x: 1, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 0}
+  m_AnchoredPosition: {x: -0.000061035156, y: 0}
   m_SizeDelta: {x: 58.26013, y: 52.5068}
   m_Pivot: {x: 1, y: 0.5}
 --- !u!114 &878043802
@@ -2934,6 +2991,19 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 878043800}
   m_CullTransparentMesh: 1
+--- !u!114 &878043805
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 878043800}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2267fb9799d1e754a929d22ad3172674, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::ButtonSFX
+  clickSfx: {fileID: 0}
 --- !u!1001 &898854632
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -3476,6 +3546,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5393d1d51f0b7bc43ab246c42ce7a693, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::SafeZone
+  fallbackBottomPadding: 40
+  extraTopPadding: 0
 --- !u!222 &1053351833
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -5601,6 +5673,7 @@ GameObject:
   - component: {fileID: 2130583265}
   - component: {fileID: 2130583264}
   - component: {fileID: 2130583263}
+  - component: {fileID: 2130583266}
   m_Layer: 5
   m_Name: Level1
   m_TagString: Untagged
@@ -5623,11 +5696,11 @@ RectTransform:
   - {fileID: 621753381}
   m_Father: {fileID: 1523321204}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 205, y: 16}
+  m_AnchorMin: {x: 1, y: 0}
+  m_AnchorMax: {x: 1, y: 0}
+  m_AnchoredPosition: {x: 280, y: 91.000046}
   m_SizeDelta: {x: 450, y: 150}
-  m_Pivot: {x: 0.5, y: 0.5}
+  m_Pivot: {x: 1, y: 0}
 --- !u!114 &2130583263
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5722,6 +5795,19 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2130583261}
   m_CullTransparentMesh: 1
+--- !u!114 &2130583266
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2130583261}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2267fb9799d1e754a929d22ad3172674, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::ButtonSFX
+  clickSfx: {fileID: 0}
 --- !u!1 &2133265264
 GameObject:
   m_ObjectHideFlags: 0
@@ -5734,6 +5820,7 @@ GameObject:
   - component: {fileID: 2133265268}
   - component: {fileID: 2133265267}
   - component: {fileID: 2133265266}
+  - component: {fileID: 2133265269}
   m_Layer: 5
   m_Name: Tutorial
   m_TagString: Untagged
@@ -5756,11 +5843,11 @@ RectTransform:
   - {fileID: 1059815153}
   m_Father: {fileID: 1523321204}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 205, y: 16}
+  m_AnchorMin: {x: 1, y: 0}
+  m_AnchorMax: {x: 1, y: 0}
+  m_AnchoredPosition: {x: 280, y: 91.000046}
   m_SizeDelta: {x: 450, y: 150}
-  m_Pivot: {x: 0.5, y: 0.5}
+  m_Pivot: {x: 1, y: 0}
 --- !u!114 &2133265266
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5855,6 +5942,19 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2133265264}
   m_CullTransparentMesh: 1
+--- !u!114 &2133265269
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2133265264}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2267fb9799d1e754a929d22ad3172674, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::ButtonSFX
+  clickSfx: {fileID: 0}
 --- !u!1001 &2137987088
 PrefabInstance:
   m_ObjectHideFlags: 0

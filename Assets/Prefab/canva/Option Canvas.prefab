@@ -256,7 +256,6 @@ RectTransform:
   m_LocalScale: {x: 0, y: 0, z: 0}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 3461661751163671444}
   - {fileID: 6007803865141595565}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -562,6 +561,7 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
+  - {fileID: 3461661751163671444}
   - {fileID: 2039851842864034476}
   - {fileID: 6327016418377690198}
   - {fileID: 1566548003775131183}
@@ -599,6 +599,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5393d1d51f0b7bc43ab246c42ce7a693, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::SafeZone
+  fallbackBottomPadding: 40
+  extraTopPadding: 0
 --- !u!1 &2467525004983823541
 GameObject:
   m_ObjectHideFlags: 0
@@ -916,6 +918,7 @@ MonoBehaviour:
   volume: 1
   maxSpinSpeed: 50
   muteToggle: {fileID: 9016772728879009883}
+  volumeText: {fileID: 0}
 --- !u!1 &3162517865344695785
 GameObject:
   m_ObjectHideFlags: 0
@@ -1189,7 +1192,7 @@ RectTransform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3862512425345674419}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -1198,7 +1201,7 @@ RectTransform:
   - {fileID: 7012168456339478415}
   - {fileID: 6132019935306119465}
   - {fileID: 9193642994740785686}
-  m_Father: {fileID: 2129540669276769179}
+  m_Father: {fileID: 6007803865141595565}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
