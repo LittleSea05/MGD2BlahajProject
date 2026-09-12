@@ -21,6 +21,7 @@ public class RushButton : MonoBehaviour,IPointerDownHandler, IPointerUpHandler
 
     public void OnPointerDown(PointerEventData eventData)
     {
+        Debug.Log("Rush button pressed!");
         IsRushing = true;
     }
 

@@ -21,6 +21,8 @@ public class LevelSelect : MonoBehaviour
 
     public GameObject InfoPanel;
 
+    public CameraFollowUI levelCamera; // 拖Camera进来
+
     void Start()
     {
         shark.position = levelPoints[0].position;
@@ -45,7 +47,7 @@ public class LevelSelect : MonoBehaviour
             PreviousButton.SetActive(false);
         }
 
-        if(currentLevel<3)
+        if(currentLevel<9)
         {
             NextButton.SetActive(true);
         }
@@ -85,15 +87,20 @@ public class LevelSelect : MonoBehaviour
 
     void MoveShark()
     {
-        shark.DOMove(
-            levelPoints[currentLevel].position,
-            moveTime
-        ).SetEase(Ease.InOutSine);
+        Vector3 targetPos = levelPoints[currentLevel].position;
+    Vector3 direction = (targetPos - shark.position);
+    direction.y = 0f;
 
-        shark.DOLookAt(
-            levelPoints[currentLevel].position,
-            0.3f
-        );
+    shark.DOKill();
+    shark.DOMove(targetPos, moveTime).SetEase(Ease.InOutSine);
+
+    if (direction.sqrMagnitude > 0.0001f)
+    {
+        Quaternion targetRot = Quaternion.LookRotation(direction.normalized, Vector3.up);
+        shark.DORotateQuaternion(targetRot, moveTime * 0.6f).SetEase(Ease.OutSine);
+    }
+
+    levelCamera.MoveToLevel(currentLevel); // 新增这行
     }
 
 void UpdateLevelButtons()
@@ -161,18 +168,14 @@ public void ShowPanel(GameObject panel)
 
     RectTransform rect = panel.GetComponent<RectTransform>();
 
-    // 记住 Panel 原本的位置
     float targetY = rect.anchoredPosition.y;
 
-    // 从原本位置下方 30px 开始
     float startY = targetY - 30f;
 
     rect.anchoredPosition = new Vector2(
         rect.anchoredPosition.x,
         startY
     );
-
-    // 从稍微小一点开始
     rect.localScale = Vector3.one * 0.9f;
 
     Sequence seq = DOTween.Sequence();

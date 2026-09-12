@@ -1,6 +1,7 @@
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
+
 public class ShopManager : MonoBehaviour
 {
     private enum UpgradeType { Speed, Weight, Hunger }
@@ -11,14 +12,17 @@ public class ShopManager : MonoBehaviour
     [Header("speed")]
     public GameObject[] speedShellIcons = new GameObject[3];
     public Button speedUpgradeButton;
+    public TMP_Text speedCannotUpgradeText; // 新增
 
     [Header("weight")]
     public GameObject[] weightShellIcons = new GameObject[3];
     public Button weightUpgradeButton;
+    public TMP_Text weightCannotUpgradeText; // 新增
 
     [Header("hunger")]
     public GameObject[] hungerShellIcons = new GameObject[3];
     public Button hungerUpgradeButton;
+    public TMP_Text hungerCannotUpgradeText; // 新增
 
     [Header("confirmation  ")]
     public GameObject confirmPanel;
@@ -93,9 +97,30 @@ public class ShopManager : MonoBehaviour
         RefreshShellIcons(weightShellIcons, PlayerUpgradeData.WeightLevel);
         RefreshShellIcons(hungerShellIcons, PlayerUpgradeData.HungerLevel);
 
-        speedUpgradeButton.interactable = CanAffordNext(UpgradeType.Speed, coins);
-        weightUpgradeButton.interactable = CanAffordNext(UpgradeType.Weight, coins);
-        hungerUpgradeButton.interactable = CanAffordNext(UpgradeType.Hunger, coins);
+        bool canSpeed = CanAffordNext(UpgradeType.Speed, coins);
+        bool canWeight = CanAffordNext(UpgradeType.Weight, coins);
+        bool canHunger = CanAffordNext(UpgradeType.Hunger, coins);
+
+        speedUpgradeButton.interactable = canSpeed;
+        weightUpgradeButton.interactable = canWeight;
+        hungerUpgradeButton.interactable = canHunger;
+
+        // 新增：按钮不可点时显示对应提示，可以点时隐藏
+        SetCannotUpgradeText(speedCannotUpgradeText, !canSpeed);
+        SetCannotUpgradeText(weightCannotUpgradeText, !canWeight);
+        SetCannotUpgradeText(hungerCannotUpgradeText, !canHunger);
+    }
+
+    // 新增：统一控制提示文字显隐
+    void SetCannotUpgradeText(TMP_Text text, bool show)
+    {
+        if (text == null) return;
+
+        text.gameObject.SetActive(show);
+        if (show)
+        {
+            text.text = "Cannot be level up now.";
+        }
     }
 
     void RefreshShellIcons(GameObject[] shellIcons, int level)

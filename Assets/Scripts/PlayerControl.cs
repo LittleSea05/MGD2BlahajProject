@@ -48,6 +48,7 @@ public class PlayerControl : MonoBehaviour
         float currentSpeed = moveSpeed;
         if (moveDirection != Vector3.zero && RushButton.IsRushing && StaminaSlider.HasStamina)
         {
+            Debug.Log("Rush button pressed!");
             currentSpeed = rushSpeed;
         }
 
