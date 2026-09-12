@@ -38,6 +38,11 @@ public class SelectLevelManager : MonoBehaviour
         SceneManager.LoadScene("SelectLevel");
     }
 
+               public void Credits()
+    {
+        SceneManager.LoadScene("Credit");
+    }
+
         public void MainMenu()
     {
 
