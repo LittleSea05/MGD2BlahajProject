@@ -1452,7 +1452,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5393d1d51f0b7bc43ab246c42ce7a693, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::SafeZone
-  fallbackBottomPadding: 40
   extraTopPadding: 0
 --- !u!1 &4331042992247320678
 GameObject:
@@ -2679,7 +2678,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0.139}
   m_AnchorMin: {x: 1, y: 1}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 1135.444, y: -33}
+  m_AnchoredPosition: {x: 1045, y: -33}
   m_SizeDelta: {x: 630.88794, y: 138.849}
   m_Pivot: {x: 1, y: 1}
 --- !u!222 &7564626024754905849

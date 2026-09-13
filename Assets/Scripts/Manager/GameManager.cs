@@ -8,6 +8,7 @@ public class GameManager : MonoBehaviour
     
     public GameObject settingCanva;
     public GameObject instructionPanel;
+    public GameObject rushButton;
 
     public void Start()
     {
@@ -15,6 +16,7 @@ public class GameManager : MonoBehaviour
         if(instructionPanel != null)
         {
             instructionPanelOpen();
+            rushButton.SetActive(false);
         }
 
 
@@ -42,6 +44,7 @@ public class GameManager : MonoBehaviour
     {
         instructionPanel.SetActive(false);
         Time.timeScale = 1f;
+        rushButton.SetActive(true);
     }
 
 
