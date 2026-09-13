@@ -2989,6 +2989,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: InGameOptionCanvas
       objectReference: {fileID: 0}
+    - target: {fileID: 5534573519543058019, guid: 49c0b698bd13e2742a2d72e2286f21bd, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 6139439638638336390, guid: 49c0b698bd13e2742a2d72e2286f21bd, type: 3}
       propertyPath: m_AnchorMax.y
       value: 0
