@@ -257,6 +257,8 @@ RectTransform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 6007803865141595565}
+  - {fileID: 1805017019159130312}
+  - {fileID: 7246064755910976735}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
@@ -566,8 +568,6 @@ RectTransform:
   - {fileID: 6327016418377690198}
   - {fileID: 1566548003775131183}
   - {fileID: 6829846446890492832}
-  - {fileID: 1805017019159130312}
-  - {fileID: 7246064755910976735}
   - {fileID: 6078599076187606075}
   - {fileID: 1630250778056856390}
   - {fileID: 5989112260256419957}
@@ -599,7 +599,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5393d1d51f0b7bc43ab246c42ce7a693, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::SafeZone
-  fallbackBottomPadding: 40
   extraTopPadding: 0
 --- !u!1 &2467525004983823541
 GameObject:
@@ -858,7 +857,7 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 6007803865141595565}
+  m_Father: {fileID: 2129540669276769179}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -1455,7 +1454,7 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 6007803865141595565}
+  m_Father: {fileID: 2129540669276769179}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: -20}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}

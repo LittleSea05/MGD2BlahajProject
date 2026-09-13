@@ -3134,6 +3134,18 @@ PrefabInstance:
       propertyPath: m_AnchorMin.x
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7446972773192678268, guid: 7c0253a2720a9df4da6e45e82ab3ffe8, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 59.999985
+      objectReference: {fileID: 0}
+    - target: {fileID: 7446972773192678268, guid: 7c0253a2720a9df4da6e45e82ab3ffe8, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 118
+      objectReference: {fileID: 0}
+    - target: {fileID: 7446972773192678268, guid: 7c0253a2720a9df4da6e45e82ab3ffe8, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 90
+      objectReference: {fileID: 0}
     - target: {fileID: 7451698329410439952, guid: 7c0253a2720a9df4da6e45e82ab3ffe8, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
