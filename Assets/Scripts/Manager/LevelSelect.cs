@@ -100,8 +100,15 @@ public class LevelSelect : MonoBehaviour
         shark.DORotateQuaternion(targetRot, moveTime * 0.6f).SetEase(Ease.OutSine);
     }
 
-    levelCamera.MoveToLevel(currentLevel); // 新增这行
+    if(levelCamera != null)
+    {
+    levelCamera.MoveToLevel(currentLevel);
+    }else // 新增这行
+    {
+        Debug.LogWarning("LevelCamera is not assigned!");
+        return;
     }
+}
 
 void UpdateLevelButtons()
 {
