@@ -32,6 +32,8 @@ public class BossFish : MonoBehaviour
 
     [Header("Eaten")]
     public GameObject victoryPanel;
+    public GameObject HUD;
+
     public int scoreValue = 500;
 
     public AudioClip eatSfx;
@@ -250,6 +252,7 @@ public class BossFish : MonoBehaviour
         if (victoryPanel != null)
         {
             victoryPanel.SetActive(true);
+            HUD.SetActive(false);
             Time.timeScale = 0f;
         }
 
