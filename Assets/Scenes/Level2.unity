@@ -635,7 +635,7 @@ PrefabInstance:
       objectReference: {fileID: 569684310}
     - target: {fileID: 670649369430088982, guid: 49c0b698bd13e2742a2d72e2286f21bd, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: musicCanva
+      value: backToGame
       objectReference: {fileID: 0}
     - target: {fileID: 2262778993459179797, guid: 49c0b698bd13e2742a2d72e2286f21bd, type: 3}
       propertyPath: m_Pivot.x
@@ -5729,7 +5729,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &2146703507
 RectTransform:
   m_ObjectHideFlags: 0
@@ -6069,13 +6069,13 @@ SceneRoots:
   m_Roots:
   - {fileID: 1157151622}
   - {fileID: 800197245}
+  - {fileID: 1368495227}
   - {fileID: 1825544585}
   - {fileID: 1558245081}
+  - {fileID: 803601037}
   - {fileID: 1604848349}
   - {fileID: 1428971364}
-  - {fileID: 803601037}
   - {fileID: 1445529095}
-  - {fileID: 1368495227}
   - {fileID: 2110516322}
   - {fileID: 248809857}
   - {fileID: 1796702862}

@@ -9,7 +9,7 @@ public class CameraFollowUI : MonoBehaviour
 
     [Header("Swipe Look")]
     public float rotateSpeed = 0.2f;
-    public float mouseRotateSpeed = 3f; // 新增：编辑器用滑鼠测试时的灵敏度
+    public float mouseRotateSpeed = 3f;
     public float maxYawOffset = 360f;
     public float maxPitchOffset = 360f;
 
@@ -20,19 +20,28 @@ public class CameraFollowUI : MonoBehaviour
     private int activeTouchId = -1;
     private Vector2 lastTouchPos;
 
-    private bool isDraggingMouse = false; // 新增
+    private bool isDraggingMouse = false;
 
     void Start()
     {
         if (cameraPoints != null && cameraPoints.Length > 0)
         {
-            baseRotation = cameraPoints[0].rotation; // 新增：一开始就对好第一个机位
+            transform.position = cameraPoints[0].position;
+            transform.rotation = cameraPoints[0].rotation;
+
+            baseRotation = cameraPoints[0].rotation;
+        }
+        else
+        {
+            baseRotation = transform.rotation;
         }
     }
 
     public void MoveToLevel(int levelIndex)
     {
-        if (cameraPoints == null || levelIndex < 0 || levelIndex >= cameraPoints.Length)
+        if (cameraPoints == null ||
+            levelIndex < 0 ||
+            levelIndex >= cameraPoints.Length)
             return;
 
         Transform target = cameraPoints[levelIndex];
@@ -41,31 +50,40 @@ public class CameraFollowUI : MonoBehaviour
         pitchOffset = 0f;
 
         transform.DOKill();
-        transform.DOMove(target.position, moveTime).SetEase(Ease.InOutSine);
 
-        DOTween.To(() => baseRotation.eulerAngles,
-            x => baseRotation = Quaternion.Euler(x),
-            target.rotation.eulerAngles,
-            moveTime)
+        transform.DOMove(target.position, moveTime)
             .SetEase(Ease.InOutSine);
+
+        transform.DORotateQuaternion(target.rotation, moveTime)
+            .SetEase(Ease.InOutSine)
+            .OnUpdate(() =>
+            {
+                baseRotation = transform.rotation;
+            })
+            .OnComplete(() =>
+            {
+                baseRotation = target.rotation;
+            });
     }
 
     void Update()
     {
 #if UNITY_EDITOR
-        HandleMouseInput(); // 编辑器里用滑鼠测试
+        HandleMouseInput();
 #else
-        HandleSwipeInput(); // 真机用触摸
+        HandleSwipeInput();
 #endif
 
-        Quaternion offsetRot = Quaternion.Euler(-pitchOffset, yawOffset, 0);
+        Quaternion offsetRot =
+            Quaternion.Euler(-pitchOffset, yawOffset, 0);
+
         transform.rotation = baseRotation * offsetRot;
     }
 
-    // 新增：滑鼠拖动，方便Editor里直接测试
     void HandleMouseInput()
     {
-        if (EventSystem.current != null && EventSystem.current.IsPointerOverGameObject())
+        if (EventSystem.current != null &&
+            EventSystem.current.IsPointerOverGameObject())
         {
             isDraggingMouse = false;
             return;
@@ -84,10 +102,20 @@ public class CameraFollowUI : MonoBehaviour
         {
             Vector2 currentPos = Input.mousePosition;
             Vector2 delta = currentPos - lastTouchPos;
+
             lastTouchPos = currentPos;
 
-            yawOffset = Mathf.Clamp(yawOffset + delta.x * mouseRotateSpeed * 0.1f, -maxYawOffset, maxYawOffset);
-            pitchOffset = Mathf.Clamp(pitchOffset + delta.y * mouseRotateSpeed * 0.1f, -maxPitchOffset, maxPitchOffset);
+            yawOffset = Mathf.Clamp(
+                yawOffset + delta.x * mouseRotateSpeed * 0.1f,
+                -maxYawOffset,
+                maxYawOffset
+            );
+
+            pitchOffset = Mathf.Clamp(
+                pitchOffset + delta.y * mouseRotateSpeed * 0.1f,
+                -maxPitchOffset,
+                maxPitchOffset
+            );
         }
     }
 
@@ -119,13 +147,26 @@ public class CameraFollowUI : MonoBehaviour
             {
                 if (touch.phase == TouchPhase.Moved)
                 {
-                    Vector2 delta = touch.position - lastTouchPos;
+                    Vector2 delta =
+                        touch.position - lastTouchPos;
+
                     lastTouchPos = touch.position;
 
-                    yawOffset = Mathf.Clamp(yawOffset + delta.x * rotateSpeed, -maxYawOffset, maxYawOffset);
-                    pitchOffset = Mathf.Clamp(pitchOffset + delta.y * rotateSpeed, -maxPitchOffset, maxPitchOffset);
+                    yawOffset = Mathf.Clamp(
+                        yawOffset + delta.x * rotateSpeed,
+                        -maxYawOffset,
+                        maxYawOffset
+                    );
+
+                    pitchOffset = Mathf.Clamp(
+                        pitchOffset + delta.y * rotateSpeed,
+                        -maxPitchOffset,
+                        maxPitchOffset
+                    );
                 }
-                else if (touch.phase == TouchPhase.Ended || touch.phase == TouchPhase.Canceled)
+                else if (
+                    touch.phase == TouchPhase.Ended ||
+                    touch.phase == TouchPhase.Canceled)
                 {
                     activeTouchId = -1;
                 }

@@ -1,3 +1,4 @@
+
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -38,6 +39,12 @@ public class PlayerControl : MonoBehaviour
 
     void FixedUpdate()
     {
+
+        if(playerJoystick == null)
+        {
+            rb.linearVelocity = Vector3.zero;
+            return;
+        }
         float horizontal = playerJoystick.Horizontal;
         float vertical = playerJoystick.Vertical;
 
